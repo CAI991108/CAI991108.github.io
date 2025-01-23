@@ -35,7 +35,7 @@ Work experience
   * Multi-Factor Smart Beta with estimations and regressions for the portofolio of securities
   * LSTM(Long_Short_Term_Memory) and GRU (Gate_Recurrent_Unit) on trading
   
-Skills
+Skills (exploring)
 ======
 <img align="center" src="https://skillicons.dev/icons?i=linux,ubuntu,windows,anaconda,pycharm,vim,py,r,latex,tensorflow,pytorch,sklearn,matlab,react,vue&theme=light" />
 <br/>
