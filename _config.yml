@@ -24,10 +24,7 @@ author:
   avatar           : "profile.png"
   name             : "Zijin CAI"
   pronouns         : "he/him"  
-  bio              : |
-                      BSc in Economics, UoM 
-                      MSc in Data Science, CUHK(SZ)
-                      测试换行
+  bio              : "BSc in Economics, UoM \n MSc in Data Science, CUHK(SZ) \n 测试换行"
   location         : "Shenzen - China"
   employer         : "CUHK(SZ)"
   uri              : # "https://github.com/CAI991108"
