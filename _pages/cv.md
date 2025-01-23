@@ -11,35 +11,34 @@ redirect_from:
 
 Education
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+* MSc in Data Science. The Chinese University of Hong Kong, Shenzhen, 2024-2026 (expected)
+  * Core Courses: Machine Learning, Language Models, Image Processing and Computer Vision, etc
+* MSc in Economics History, The London School of Economics and Political Science, 2021 (deferral)
+* BSc (Hons) in Economics, University of Manchester, 2018-2021
+  * GPA 72.5/100 -- Awarded First Class degree
+  * Core Courses: Applied Economics, Mathematical Economics, Advanced Economictrics, etc
+* INTO Manchester (NCUK), 2017-2018
+  * International Foundation Programme (UoM Pathway)
+  * Major in British Politics, Economics, Advance Mathematics and EAP
+
+Academic experience
+======
+* Research Assistant - University of Cambridge Economics Faculty Research Workshop, 2020-2021
+  * statistical techniques applied in econometrics, data science associated with using the STATA
+  * Contribution on entire research process - "Alcohol Consumption and the Labour Market"
 
 Work experience
 ======
-* Spring 2024: Academic Pages Collaborator
-  * Github University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
-
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
-
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* Quant_Strats Manager - Dongguan Hui Feng Asset Management Co. Ltd, 2021-2024
+  * Maintenance and development of the Python native quantization library
+  * Research on quantitative backtesting strategies, quantization factor in actual trading
+  * Multi-Factor Smart Beta with estimations and regressions for the portofolio of securities
+  * LSTM(Long_Short_Term_Memory) and GRU (Gate_Recurrent_Unit) on trading
   
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+<img align="center" src="https://skillicons.dev/icons?i=linux,ubuntu,windows,anaconda,pycharm,vim,py,r,latex,tensorflow,pytorch,sklearn,matlab,react,vue&theme=light" />
+<br/>
 
 Publications
 ======
@@ -59,6 +58,3 @@ Teaching
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
