@@ -27,7 +27,7 @@ author:
   bio              : "BSc Econ, UoM --> MSc DS, CUHK(SZ)"
   location         : "Shenzen - China"
   employer         : "CUHK(SZ)"
-  uri              : "https://github.com/CAI991108"
+  uri              : # "https://github.com/CAI991108"
   email            : "224040002@link.cuhk.edu.cn" 
 
   # Academic websites
