@@ -9,14 +9,15 @@ redirect_from:
 
 <!-- https://github.com/DenverCoder1/readme-typing-svg -->
 <p align="center">
-<img src="https://readme-typing-svg.demolab.com?font=Orbitron&size=25&pause=1000&center=true&vCenter=true&random=false&width=600&lines=Welcome+to+my+GitHub+profile!" />
+<img src="https://readme-typing-svg.demolab.com?font=Orbitron&size=25&pause=1000&center=true&vCenter=true&random=false&width=600&lines=Welcome+to+my+profile+page!" />
 </p>
 
 
 
 My skills set: (exploring continuous ...)
-<br/>
+<p align="center">
 <img align="center" src="https://skillicons.dev/icons?i=linux,ubuntu,windows,anaconda,pycharm,vim,py,r,latex,tensorflow,pytorch,sklearn,matlab,react,vue&theme=light" />
+</p>
 <br/>
 
 Please feel free to contact me via email or:
