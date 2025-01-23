@@ -7,8 +7,8 @@
 # server process.
 
 # Basic Site Settings
-locale                   : "Shenzhen-China"
-title                    : "Zijin CAI / CAI991108.github.io"
+locale                   : "Shenzhen - China"
+title                    : "Zijin CAI / CAI991108"
 title_separator          : "-"
 name                     : &name "Zijin CAI"
 description              : &description "BSc Econ, UoM --> MSc DS, CUHK(SZ)"
@@ -25,8 +25,8 @@ author:
   name             : "Zijin CAI"
   pronouns         : "he/him"  
   bio              : "BSc Econ, UoM --> MSc DS, CUHK(SZ)"
-  location         : "Shenzen-China"
-  employer         : "The Chinese University of Hong Kong, Shenzhen"
+  location         : "Shenzen - China"
+  employer         : "CUHK(SZ)"
   uri              : "https://github.com/CAI991108"
   email            : "224040002@link.cuhk.edu.cn" 
 
