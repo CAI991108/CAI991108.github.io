@@ -24,9 +24,11 @@ author:
   avatar           : "profile.png"
   name             : "Zijin CAI"
   pronouns         : "he/him"  
-  bio              : | 
+  bio              : "
                       BSc in Economics, University of Manchester 
                       MSc in Data Science, CUHK(SZ)
+                      测试换行
+                      "
   location         : "Shenzen - China"
   employer         : "CUHK(SZ)"
   uri              : # "https://github.com/CAI991108"
