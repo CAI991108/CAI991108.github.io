@@ -21,7 +21,7 @@ Education
   * Core Courses: Machine Learning, Language Models, Image Processing and Computer Vision, etc
 
 ### **The London School of Economics and Political Science**
-**Master of Science in Economics History**-- *2021 (deferral)*
+*Master of Science in Economics History*-- *2021 (deferral)*
 
 ### **The University of Manchester**  
 *Bachelor of Science (Hons) in Economics*-- *2018-2021*
