@@ -17,37 +17,37 @@ redirect_from:
 Education
 ======
 ### **The Chinese University of Hong Kong, Shenzhen**
-**Master of Science in Data Science**-- *2024-2026 (expected)*
+*Master of Science in Data Science*-- *2024-2026 (expected)*
   * Core Courses: Machine Learning, Language Models, Image Processing and Computer Vision, etc
 
 ### **The London School of Economics and Political Science**
 **Master of Science in Economics History**-- *2021 (deferral)*
 
 ### **The University of Manchester**  
-**Bachelor of Science (Hons) in Economics**-- *2018-2021*
+*Bachelor of Science (Hons) in Economics*-- *2018-2021*
   * GPA 72.5/100 -- Awarded First Class degree
   * Core Courses: Applied Economics, Mathematical Economics, Advanced Economictrics, etc
 
 ### **INTO Manchester (NCUK)** 
-**International Foundation Degree in Business**-- *2017-2018*
+*International Foundation Degree in Business*-- *2017-2018*
   * Major in British Politics, Economics, Advance Mathematics and EAP
 
 Academic experience
 ======
 ### **University of Cambridge, Economics Faculty Research Workshop**
-**Research Assistant (remote)**-- *2020-2021*
+*Research Assistant (remote)*-- *2020-2021*
   * statistical techniques applied in econometrics, data science associated with using the STATA
   * Contribution on entire research process - "Alcohol Consumption and the Labour Market"
 
 ### **MIT Summer Research Camp**
-**Research Project Assistant** -- *2019*
+*Research Project Assistant* -- *2019*
   * statistical techniques applied in econometrics, data science associated with using the STATA
   * Contribution on entire research process - "Direct Flights and Economic Growth"
 
 Work experience
 ======
 ### **Dongguan Hui Feng Asset Management Co. Ltd**
-**Quant_Strats Manager in Trading Department** -- *2021-2024*
+*Quant_Strats Manager in Trading Department* -- *2021-2024*
   * Maintenance and development of the Python native quantization library
   * Research on quantitative backtesting strategies, quantization factor in actual trading
   * Multi-Factor Smart Beta with estimations and regressions for the portofolio of securities
@@ -56,7 +56,7 @@ Work experience
 Extracurricular Activities
 ======
 ### **MCBS (Manchester China Business Community)** 
-**Public Relationship Department Associate**  -- *2018-2020*  
+*Public Relationship Department Associate*  -- *2018-2020*  
   * Participated in workshops and conferences on job consulting and business analytics.  
   * Liaised with sponsors to secure funding and developed communication and teamwork skills.
 
