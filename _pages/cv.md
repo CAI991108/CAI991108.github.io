@@ -17,25 +17,25 @@ redirect_from:
 Education
 ======
 ### **The Chinese University of Hong Kong, Shenzhen**
-*Master of Science in Data Science*-- *2024-2026 (expected)*
+*Master of Science in Data Science* -- *2024-2026 (expected)*
   * Core Courses: Machine Learning, Language Models, Image Processing and Computer Vision, etc
 
 ### **The London School of Economics and Political Science**
-*Master of Science in Economics History*-- *2021 (deferral)*
+*Master of Science in Economics History* -- *2021 (deferral)*
 
 ### **The University of Manchester**  
-*Bachelor of Science (Hons) in Economics*-- *2018-2021*
+*Bachelor of Science (Hons) in Economics* -- *2018-2021*
   * GPA 72.5/100 -- Awarded First Class degree
   * Core Courses: Applied Economics, Mathematical Economics, Advanced Economictrics, etc
 
 ### **INTO Manchester (NCUK)** 
-*International Foundation Degree in Business*-- *2017-2018*
+*International Foundation Degree in Business* -- *2017-2018*
   * Major in British Politics, Economics, Advance Mathematics and EAP
 
 Academic experience
 ======
 ### **University of Cambridge, Economics Faculty Research Workshop**
-*Research Assistant (remote)*-- *2020-2021*
+*Research Assistant (remote)* -- *2020-2021*
   * statistical techniques applied in econometrics, data science associated with using the STATA
   * Contribution on entire research process - "Alcohol Consumption and the Labour Market"
 
