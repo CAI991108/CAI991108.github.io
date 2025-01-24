@@ -10,7 +10,7 @@ redirect_from:
 {% include base_path %}
 
 
-📧 <224040002@link.cuhk.edu.cn> | 📞 +86-13543750006
+📧 <224040002@link.cuhk.edu.cn> / <caizijin1999@hotmail.com> | 📞 +86-13543750006
 
 ---
 
