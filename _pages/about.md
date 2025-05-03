@@ -10,7 +10,7 @@ redirect_from:
 👋 I'm currently on my Master's degree in Data Science at CUHK(SZ), after my Bachelor's in Economics at the University of Manchester.
 
 ## 🛠️ Skills & Tools
-- **Areas of Interest:** Machine Learning, Language Models, Image Processing, Computer Vision, Natural Language Processing
+- **Areas of Interest:** Machine Learning, Language Models, Image Processing, Computer Vision, Natural Language Processing, Genrative AI, LLMs Multimodal and Agent
 <p align="center">
 <img align="center" src="https://skillicons.dev/icons?i=linux,ubuntu,windows,anaconda,pycharm,vim,py,r,latex,tensorflow,pytorch,sklearn,matlab,react,vue&theme=light" />
 </p>
