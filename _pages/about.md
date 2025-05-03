@@ -10,18 +10,31 @@ redirect_from:
 👋 I'm currently on my Master's degree in Data Science at CUHK(SZ), after my Bachelor's in Economics at the University of Manchester.
 
 ## 🛠️ Skills & Tools
-- **Areas of Interest:** Machine Learning, Language Models, Image Processing, Computer Vision, Optimization
+- **Areas of Interest:** Machine Learning, Language Models, Image Processing, Computer Vision, Natural Language Processing
 <p align="center">
 <img align="center" src="https://skillicons.dev/icons?i=linux,ubuntu,windows,anaconda,pycharm,vim,py,r,latex,tensorflow,pytorch,sklearn,matlab,react,vue&theme=light" />
 </p>
 <br/>
 
 ## 🏆 Pinned Repositories
-- **[Machine-Learning-and-Language-Model](https://github.com/CAI991108/Machine-Learning-and-Language-Model):** Exploring GPT-2 and Llama models with pre-training, fine-tuning, and Chain-of-Thought (CoT) prompting.
-- **[SD3M-SimpleTuner-Iora](https://github.com/CAI991108/SD3M-SimpleTuner-Iora):** Fine-tuning Stable Diffusion 3 Medium for generative art enhancements.
-- **[Image-Processing-and-Computer-Vision](https://github.com/CAI991108/Image-Processing-and-Computer-Vision):** Code and implementations for image processing and computer vision tasks.
-- **[Machine-Learning-Utils](https://github.com/CAI991108/Machine-Learning-Utils):** Python code for supervised and unsupervised learning, regularization, cross-validation, PCA, and SVM.
 
+- **[SD3M-SimpleTuner-Iora](https://github.com/CAI991108/SD3M-SimpleTuning)**  
+  Tuning Stable Diffusion 3 Medium for generative art enhancement.
+
+- **[Image-Processing-and-Computer-Vision](https://github.com/Reading-System-108/Image-Processing-and-computer-Vision)**  
+  Code and implementation for image processing and computer vision.
+
+- **[JD_search_agent](https://github.com/)**  
+  Stateful AI shopping assistant for JD.com with multimodal product search (text-image OCR).
+
+- **[RoboAction-Frame-Prediction](https://github.com/)**  
+  Multimodal fine-tuned model predicting future robotic action frames (256+256 resolution).
+
+- **[Deep-Learning-Utilis](https://github.com/)**  
+  Fundamental to advanced deep learning projects with theory-implementation combos.
+
+- **[Natural-Language-Processing-Vills](https://github.com/)**  
+  Cutting-edge NLP projects from word embeddings to LLM fine-tuning.
 
 ## 📫 Contact
 
