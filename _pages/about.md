@@ -18,23 +18,15 @@ redirect_from:
 
 ## 🏆 Pinned Repositories
 
-- **[SD3M-SimpleTuner-Iora](https://github.com/CAI991108/SD3M-SimpleTuning)**  
-  Tuning Stable Diffusion 3 Medium for generative art enhancement.
+- **[SD3M-SimpleTuner-Iora](https://github.com/CAI991108/SD3M-SimpleTuner-lora)**: Tuning Stable Diffusion 3 Medium for generative art enhancement.
 
-- **[Image-Processing-and-Computer-Vision](https://github.com/Reading-System-108/Image-Processing-and-computer-Vision)**  
-  Code and implementation for image processing and computer vision.
+- **[JD_search_agent](https://github.com/CAI991108/JD_search_agent)**: Stateful AI shopping assistant for JD.com with multimodal product search (text-image OCR).
 
-- **[JD_search_agent](https://github.com/)**  
-  Stateful AI shopping assistant for JD.com with multimodal product search (text-image OCR).
+- **[RoboAction-Frame-Prediction](https://github.com/CAI991108/Robotic-Action-Frame-Prediction-with-InstructPix2Pix)**: Multimodal fine-tuned model predicting future robotic action frames (256+256 resolution).
 
-- **[RoboAction-Frame-Prediction](https://github.com/)**  
-  Multimodal fine-tuned model predicting future robotic action frames (256+256 resolution).
+- **[Deep-Learning-Utilis](https://github.com/CAI991108/Deep-Learning-Utils)**: Fundamental to advanced deep learning projects with theory-implementation combos.
 
-- **[Deep-Learning-Utilis](https://github.com/)**  
-  Fundamental to advanced deep learning projects with theory-implementation combos.
-
-- **[Natural-Language-Processing-Vills](https://github.com/)**  
-  Cutting-edge NLP projects from word embeddings to LLM fine-tuning.
+- **[Natural-Language-Processing-Vills](https://github.com/CAI991108/Natural-Language-Processing-Utils)**: Cutting-edge NLP projects from word embeddings to LLM fine-tuning.
 
 ## 📫 Contact
 
