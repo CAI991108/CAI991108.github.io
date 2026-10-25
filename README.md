@@ -6,12 +6,16 @@ Source of <https://cai991108.github.io> — an academic site: research, projects
 
 | URL | Source | Holds |
 | :-- | :-- | :-- |
-| `/` | `_pages/about.md` | the front page: name, what I work on, four selected projects, the lab systems, skills, awards |
-| `/research/` | `_pages/research.md` | directions and the two CROSS Joint Lab systems |
+| `/` | `_pages/about.md` | the front page: name, what I work on, two selected projects, the lab systems, skills, contact |
+| `/research/` | `_pages/research.md` | directions, how the work is done, the two CROSS Joint Lab systems |
 | `/projects/` | `_pages/projects.html` | every maintained repo, from `_data/projects.yml` |
 | `/cv/` | `_pages/cv.md` | the CV; `files/cv.pdf` is printed from it |
+| `/zh/` | `_pages/zh/about.md` | the front page, in Chinese |
+| `/zh/research/` | `_pages/zh/research.md` | the research page, in Chinese |
 
-The lab table (`_includes/lab-systems.html`) and the project cards (`_includes/project-cards.html`) are shared, so the homepage and the two inner pages cannot drift apart.
+The lab table (`_includes/lab-systems.html`) and the work rows (`_includes/work-rows.html`) are shared, so the homepage and the two inner pages cannot drift apart.
+
+**The site is bilingual**, and the two languages are pairs, not translations: `/` ↔ `/zh/`, `/research/` ↔ `/zh/research/`. Each page carries `lang:` and, when it has a twin, `twin:`; `_includes/hreflang.html` turns that into the reciprocal alternates a crawler needs, and the masthead ends with a one-word switch. Projects and the CV exist only in English on purpose. Editing one side of a pair means editing the other — `npm run check` holds the pair together.
 
 ## Making a change
 
@@ -35,6 +39,8 @@ npm run check        # after: asserts against the live site
 **`preflight`** catches what is cheap to catch on the way out: front matter that would not parse, a `{% include %}` naming a file that does not exist, `main.scss` failing to compile, and a CV PDF left behind by a later edit to `cv.md`. A `pre-push` hook on this machine runs it, so a broken push stops before it leaves.
 
 **`check`** runs against `https://cai991108.github.io` (or `SITE_URL=http://127.0.0.1:4000 npm run check`). It checks every page for a 200, for broken same-origin sub-resources, for leftover placeholder copy, for a description meta, and for layout overflow at 390px (that last one needs Chrome and is skipped when it is absent). It also pins what has to *stay* true: the brand colour in the built CSS, the CJK font stack, valid Person JSON-LD, a downloadable CV PDF, and seven retired template URLs still answering 404.
+
+Seven of its 63 assertions are about the language pair: both sides of each pair answer, `hreflang` is reciprocal with `x-default` on English, `<html lang>` is right per page, the Chinese pages are really in Chinese (Han-per-letter ratio), the facts that must not drift are still there (address, institutions, lab systems), and the Chinese face is a subset that only Chinese pages ask for. Wording is never compared — the Chinese pages are rewrites.
 
 Neither script tests the other. `check` has caught real bugs on this repo; that is the evidence it is not vacuous.
 
@@ -71,9 +77,12 @@ npm run cv:pdf
 
 ```bash
 python scripts/make-assets.py    # favicons, share card, square avatar
+npm run fonts                    # the Chinese webfont subset
 ```
 
-The full-resolution avatar source is deliberately not committed (`images/profile.src.jpg`, gitignored); put it back before regenerating `images/profile.webp`.
+The full-resolution avatar source is deliberately not committed (`images/profile.src.jpg`, gitignored); put it back before regenerating `images/profile.webp`. `make-assets.py` needs a Python with Pillow, which this machine did not have the last time anyone looked — the generated files are committed, so it only matters when one of them changes.
+
+The Chinese face is the same arrangement one step further: `assets/fonts/noto-serif-sc-{400,600}.woff2` are cut by `scripts/make-cjk-font.mjs` from `assets/fonts/src/NotoSerifSC[wght].ttf` (24 MB, gitignored, SIL OFL 1.1, from `google/fonts`). The subset holds every Han character that appears anywhere in the site's copy — currently 490 of them, ~125 KB per weight, against 15.7 MB for the whole face. **Re-run it after any Chinese copy change**: `preflight` refuses a push when the copy has moved ahead of the .woff2 files, because a missing glyph falls back mid-sentence rather than failing loudly.
 
 ## Licence
 

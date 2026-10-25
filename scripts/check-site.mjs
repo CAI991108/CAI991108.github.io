@@ -495,6 +495,160 @@ try {
   record("home weight", false, err.message);
 }
 
+// ------------------------------------------------------------------ i18n --
+
+/* The Chinese pages are a second copy of the same site, which is the shape that
+ * rots: someone edits one side and forgets the other, drops a hreflang link, or
+ * ships a "Chinese" page that is still English.
+ *
+ * Wording is deliberately not compared. The Chinese pages are rewrites, not
+ * translations, so what is asserted is the structure (both sides exist, they
+ * point at each other, each declares its own language), that the Chinese is
+ * really Chinese, and that the facts that must never drift are still there. */
+
+const LANG_PAIRS = [
+  ["/", "/zh/"],
+  ["/research/", "/zh/research/"],
+];
+
+try {
+  const cache = new Map();
+  const get = async (p) => {
+    if (!cache.has(p)) {
+      const res = await fetch(BASE + p);
+      cache.set(p, { status: res.status, html: res.ok ? await res.text() : "" });
+    }
+    return cache.get(p);
+  };
+  const alternates = (html) => {
+    const out = {};
+    for (const m of html.matchAll(/<link rel="alternate" hreflang="([^"]*)" href="([^"]*)">/g)) out[m[1]] = m[2];
+    return out;
+  };
+
+  // 1. both directions answer, and each side names the other. Adding a page
+  //    without wiring its pair fails here rather than six months later.
+  let pairsOk = true;
+  const pairNotes = [];
+  for (const [en, zh] of LANG_PAIRS) {
+    const a = await get(en);
+    const b = await get(zh);
+    const ok =
+      a.status === 200 && b.status === 200 && Boolean(alternates(a.html)["zh-Hans"]) && Boolean(alternates(b.html)["en"]);
+    if (!ok) {
+      pairsOk = false;
+      pairNotes.push(en + "/" + zh + " " + a.status + "/" + b.status);
+    }
+  }
+  record("every language pair answers both ways", pairsOk, pairsOk ? LANG_PAIRS.length + " pairs" : pairNotes.join(", "));
+
+  // 2. hreflang is self-inclusive, reciprocal, and x-default lands on English —
+  //    Google drops a one-way set entirely, so a half-wired pair is invisible.
+  //    Compared by pathname, not by full URL: the check also runs against a
+  //    local serve (SITE_URL), where the page's own absolute_url still names
+  //    production and the origin would be a false mismatch.
+  const pathOf = (u) => {
+    try {
+      return new URL(u).pathname;
+    } catch {
+      return null;
+    }
+  };
+  let hrefOk = true;
+  const hrefNotes = [];
+  for (const [en, zh] of LANG_PAIRS) {
+    const expected = { en, "zh-Hans": zh, "x-default": en };
+    const matches = (m) =>
+      pathOf(m.en) === expected.en && pathOf(m["zh-Hans"]) === expected["zh-Hans"] && pathOf(m["x-default"]) === expected.en;
+    const a = alternates((await get(en)).html);
+    const b = alternates((await get(zh)).html);
+    if (!matches(a) || !matches(b)) {
+      hrefOk = false;
+      hrefNotes.push(en + " " + JSON.stringify(a));
+    }
+  }
+  record("hreflang is reciprocal, x-default on English", hrefOk, hrefOk ? LANG_PAIRS.length + " pairs" : hrefNotes[0]);
+
+  // 3. the document language is per page, not per site. zh-Hans, not zh: the
+  //    layout used to slice the locale to two letters, which turns zh-Hans into
+  //    zh and would quietly make this pass.
+  const LANGS = [
+    ["/", "en"],
+    ["/cv/", "en"],
+    ["/research/", "en"],
+    ["/projects/", "en"],
+    ["/zh/", "zh-Hans"],
+    ["/zh/research/", "zh-Hans"],
+  ];
+  let langOk = true;
+  const langNotes = [];
+  for (const [p, want] of LANGS) {
+    const got = ((await get(p)).html.match(/<html[^>]*lang="([^"]*)"/) || [])[1];
+    if (got !== want) {
+      langOk = false;
+      langNotes.push(p + '="' + got + '"');
+    }
+  }
+  record("<html lang> is right on every page", langOk, langOk ? LANGS.length + " pages" : langNotes.join(", "));
+
+  // 4. the Chinese pages are in Chinese. Measured 2026-10: /zh/ 0.40 Han per
+  //    letter, /zh/research/ 0.72; every English page sits at 0.01. The floor is
+  //    far below the live values on purpose — it catches a page that reverted to
+  //    English, not a page that quotes one.
+  let hanOk = true;
+  const hanNotes = [];
+  for (const [, zh] of LANG_PAIRS) {
+    const text = (await get(zh)).html
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ");
+    const han = (text.match(/[\u4e00-\u9fff]/g) || []).length;
+    const latin = (text.match(/[A-Za-z]/g) || []).length;
+    const ratio = han / (han + latin || 1);
+    if (han < 200 || ratio < 0.3) {
+      hanOk = false;
+      hanNotes.push(zh + " han=" + han + " ratio=" + ratio.toFixed(2));
+    }
+  }
+  record("Chinese pages are actually in Chinese", hanOk, hanOk ? "han>=200, ratio>=0.30" : hanNotes.join(", "));
+
+  // 5. the facts that must not drift. Not sentences: the address, the two
+  //    institutions, and the lab systems both pages name.
+  const ANCHORS = ["zijincai@link.cuhk.edu.cn", "CUHK", "CROSS", "CrossLedger", "CrossBooks"];
+  let factsOk = true;
+  const factNotes = [];
+  for (const [, zh] of LANG_PAIRS) {
+    const html = (await get(zh)).html;
+    const missing = ANCHORS.filter((a) => !html.includes(a));
+    if (missing.length) {
+      factsOk = false;
+      factNotes.push(zh + " missing " + missing.join("/"));
+    }
+  }
+  record("Chinese pages keep the facts", factsOk, factsOk ? ANCHORS.length + " anchors" : factNotes.join(", "));
+
+  // 6. the Chinese face is a subset, and only Chinese pages ask for it. A full
+  //    Noto Serif SC is 15.7 MB; one accidentally committed would still render.
+  let fontOk = true;
+  const fontNotes = [];
+  for (const w of [400, 600]) {
+    const res = await fetch(BASE + "/assets/fonts/noto-serif-sc-" + w + ".woff2");
+    const bytes = res.ok ? (await res.arrayBuffer()).byteLength : 0;
+    if (res.status !== 200 || bytes === 0 || bytes > 200 * 1024) {
+      fontOk = false;
+      fontNotes.push(w + " " + res.status + " " + bytes + "B");
+    }
+  }
+  record("Chinese face is a subset under 200 KB", fontOk, fontOk ? "400 + 600" : fontNotes.join(", "));
+
+  const enHtml = (await get("/")).html;
+  const zhHtml = (await get("/zh/")).html;
+  const onlyZh = !/@font-face/.test(enHtml) && (zhHtml.match(/@font-face/g) || []).length >= 2;
+  record("Chinese face loads only on Chinese pages", onlyZh, onlyZh ? "0 on /, 2 on /zh/" : "font-face leaked");
+} catch (err) {
+  record("the Chinese pages are guarded", false, err.message);
+}
+
 // ------------------------------------------------------------------ report --
 
 let failed = 0;

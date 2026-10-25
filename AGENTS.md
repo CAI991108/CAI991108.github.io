@@ -6,6 +6,8 @@ Changing the site — page map, the three non-obvious gotchas, and how to verify
 
 More than one session in this repo at a time: give each its own `git worktree`, and stage explicit paths — a concurrent commit can swallow a `git add -A` and the push then reports "Everything up-to-date" with the work still uncommitted.
 
+The site is bilingual: `/` and `/research/` have Chinese twins under `/zh/`, and `npm run check` holds each pair together. Editing one side of a pair means editing the other; Chinese copy also needs `npm run fonts` (the subset lives in `assets/fonts/`, cut from a gitignored source face).
+
 ## Agent skills
 
 ### Issue tracker
