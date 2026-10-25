@@ -334,12 +334,12 @@ if (chrome) {
 // The palette and font stack have to survive the Sass build and reach the CSS.
 try {
   const css = await (await fetch(BASE + "/assets/css/main.css")).text();
-  const hasBlue = /#5d7aa9/i.test(css);
-  record("css carries the brand colour", hasBlue, hasBlue ? "#5d7aa9" : "#5d7aa9 missing from main.css");
+  const hasLink = /#4f6d99/i.test(css);
+  record("css carries the link colour", hasLink, hasLink ? "#4f6d99" : "#4f6d99 missing from main.css");
   const hasCjk = /Noto Sans SC/.test(css);
   record("css carries the CJK stack", hasCjk, hasCjk ? "Noto Sans SC" : "Noto Sans SC missing from main.css");
 } catch (err) {
-  record("css carries the brand colour", false, err.message);
+  record("css carries the link colour", false, err.message);
 }
 
 // The Person entity has to be parseable JSON with a real sameAs list.

@@ -8,94 +8,156 @@
 
 /* ---------------------------------------------------------------- typography */
 
-/* Slightly more leading than the theme's 1.5: the body copy is set in a light
- * sans on white, and 1.5 reads cramped at this measure. */
+/* Serif at 17px, six tenths of a line apart, measured in characters rather
+ * than pixels: the column is what a reader feels, not the width. */
 body {
+  font-size: 17px;
   line-height: 1.6;
 }
 
-.page__content p,
-.page__content li {
-  line-height: 1.6;
+.page__inner-wrap,
+.archive {
+  max-width: 62ch;
 }
 
-/* Titles are large here; a touch of negative tracking stops them looking
- * letterspaced at display sizes. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $serif;
+}
+
 .page__title {
-  letter-spacing: -0.012em;
+  font-size: 2.05rem;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.5rem;
 }
 
-.page__content h2 {
-  letter-spacing: -0.006em;
+/* Section headings are labels, not prose: sans, small, spaced, grey, sitting
+ * under a hairline that does the dividing. */
+.page__content h2,
+.archive h2 {
+  font-family: $sans-ui;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $gray;
+  margin: 2.6rem 0 1.1rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid $border-color;
+}
+
+.page__content h3,
+.archive h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  margin: 1.7rem 0 0.35rem;
 }
 
 /* ------------------------------------------------------------------- surface */
 
-/* The masthead already has a 1px hairline from the theme; tinting it toward the
- * brand colour keeps it from reading as a stray gray rule. */
 .masthead {
-  border-bottom-color: rgba($palette-blue, 0.28);
+  border-bottom-color: $border-color;
+
+  &__inner-wrap {
+    font-family: $sans-ui;
+  }
 }
 
-/* A hairline ring instead of the avatar floating on white. */
-img.author__avatar {
-  border-radius: 50%;
-  box-shadow: 0 0 0 1px rgba($palette-blue, 0.22);
-}
-
-.author__name {
+.masthead__menu-item--lg {
   letter-spacing: -0.01em;
 }
 
-/* The sidebar bio is content, not a caption: give it the body colour rather
- * than the template's gray. */
+.sidebar {
+  font-family: $sans-ui;
+}
+
+img.author__avatar {
+  border-radius: 50%;
+  box-shadow: none;
+}
+
+.author__name {
+  font-family: $sans-ui;
+  font-size: 0.95rem;
+  letter-spacing: -0.005em;
+}
+
+.author__role,
+.author__pronouns,
 .author__bio {
+  font-size: 0.82rem;
+  line-height: 1.5;
   color: $text-color;
+}
+
+.author__urls {
+  font-size: 0.82rem;
 }
 
 /* --------------------------------------------------------------- homepage */
 
-/* Identity line under the name: the one thing a visitor should read even if
- * they read nothing else. */
 .hero__identity {
-  margin: -0.35rem 0 1.1rem;
-  font-size: $type-size-5;
+  font-family: $sans-ui;
+  font-size: 0.86rem;
+  line-height: 1.55;
   color: $gray;
+  margin: -0.15rem 0 1.5rem;
 
   strong {
     color: $text-color;
+    font-weight: 500;
   }
 }
 
 .hero__lede {
-  font-size: $type-size-5;
+  font-size: 1.06rem;
 }
 
-/* The "now" line, set apart with a rule instead of a full callout box. */
 .hero__now {
-  margin: 1.4rem 0 2rem;
-  padding: 0.15rem 0 0.15rem 0.9rem;
-  border-left: 2px solid rgba($palette-mauve, 0.45);
-  font-size: $type-size-6;
-  color: $text-color;
+  font-family: $sans-ui;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: $gray;
+  margin: 1.5rem 0 0;
+  padding-left: 0.85rem;
+  border-left: 2px solid rgba($gray, 0.45);
+
+  strong {
+    color: $text-color;
+    font-weight: 500;
+  }
 }
 
-/* A quiet pointer from a homepage block to the page that holds the detail. */
 .section-more {
-  margin: -0.6rem 0 2rem;
-  font-size: $type-size-6;
+  font-family: $sans-ui;
+  font-size: 0.82rem;
+  margin: 0.9rem 0 0;
 }
 
 .skill-row {
-  margin: 0 0 0.45rem;
-  font-size: $type-size-6;
+  font-size: 0.95rem;
   line-height: 1.6;
+  margin: 0 0 0.4rem;
+
+  strong {
+    font-family: $sans-ui;
+    font-size: 0.76rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
 }
 
 /* ------------------------------------------------------------- lab systems */
 
 .lab-note {
-  font-size: $type-size-6;
+  font-size: 0.9rem;
   color: $gray;
 }
 
@@ -103,14 +165,18 @@ img.author__avatar {
   width: 100%;
   margin: 1rem 0 1.2rem;
   border-collapse: collapse;
-  font-size: $type-size-6;
+  font-size: 0.82rem;
   table-layout: fixed;
 
   th {
+    font-family: $sans-ui;
     padding: 0.4rem 0.6rem;
     border-bottom: 1px solid $border-color;
     color: $gray;
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     text-align: left;
     white-space: nowrap;
   }
@@ -122,8 +188,6 @@ img.author__avatar {
     line-height: 1.5;
   }
 
-  /* System names are short and fixed; the description is the column that
-   * wants the room. */
   th:first-child,
   td:first-child {
     width: 18%;
@@ -133,10 +197,6 @@ img.author__avatar {
   th:last-child,
   td:last-child {
     width: 34%;
-  }
-
-  .chip {
-    margin-bottom: 0.2rem;
   }
 }
 
@@ -159,38 +219,23 @@ img.author__avatar {
   display: block;
   width: 100%;
   height: auto;
-  border: 1px solid $border-color;
-  border-radius: 4px;
+  border: 0;
+  border-radius: 0;
   background: $background-color;
 }
 
 .cert-grid figcaption {
+  font-family: $sans-ui;
   margin-top: 0.45rem;
-  font-size: $type-size-7;
+  font-size: 0.7rem;
   color: $gray;
-  text-align: center;
   line-height: 1.4;
-}
-
-/* ------------------------------------------------------------------- chips */
-
-/* Used for a project's stack chips and, on the homepage, for the skills that
- * used to be twelve shields.io images (twelve third-party requests per page). */
-.chip {
-  display: inline-block;
-  margin: 0 0.3rem 0.3rem 0;
-  padding: 0.08rem 0.5rem;
-  border: 1px solid rgba($palette-blue, 0.28);
-  border-radius: 3px;
-  background: rgba($palette-blue, 0.06);
-  font-size: $type-size-6;
-  line-height: 1.5;
-  color: $palette-blue;
-  white-space: nowrap;
 }
 
 /* ------------------------------------------------------------ project cards */
 
+/* Interim: the homepage and /projects/ still render cards until their own
+ * tickets replace them with plain rows. */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -203,70 +248,62 @@ img.author__avatar {
   flex-direction: column;
   padding: 1rem 1.15rem 1.1rem;
   border: 1px solid $border-color;
-  border-radius: 6px;
+  border-radius: 0;
   background: $background-color;
-
-  &:hover {
-    border-color: rgba($palette-blue, 0.4);
-  }
 }
 
 .project-card__title {
   margin: 0 0 0.4rem;
-  font-size: $type-size-4;
+  font-size: 1rem;
+  font-weight: 600;
   line-height: 1.3;
-  /* Repo names are long and unbroken; let them wrap instead of overflowing. */
   overflow-wrap: anywhere;
 }
 
 .project-card__blurb {
   flex: 1;
   margin: 0 0 0.8rem;
-  font-size: $type-size-6;
+  font-size: 0.9rem;
   line-height: 1.5;
-  color: $text-color;
 }
 
 .project-card__meta {
+  font-family: $sans-ui;
   margin: 0;
 }
 
-/* ------------------------------------------------------------------ narrow */
-
-@media (max-width: 37.5em) {
-  .cert-grid,
-  .project-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  /* Fixed column widths only make sense when there is a column to spare. */
-  .lab-table {
-    table-layout: auto;
-
-    th:first-child,
-    td:first-child {
-      width: auto;
-      white-space: normal;
-    }
-
-    th:last-child,
-    td:last-child {
-      width: auto;
-    }
-  }
+.chip {
+  font-family: $sans-ui;
+  display: inline-block;
+  margin: 0 0.3rem 0.3rem 0;
+  padding: 0.04rem 0.42rem;
+  border: 1px solid $border-color;
+  border-radius: 0;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  color: $gray;
+  white-space: nowrap;
 }
 
 /* ---------------------------------------------------------------------- cv */
 
 .cv-contact,
+.cv-download,
+.cv-summary {
+  font-size: 0.95rem;
+}
+
+.cv-contact {
+  font-family: $sans-ui;
+  font-size: 0.82rem;
+}
+
 .cv-download {
-  margin: 0 0 0.5rem;
-  font-size: $type-size-6;
+  font-size: 0.82rem;
 }
 
 .cv-summary {
-  margin: 0.2rem 0 1.8rem;
-  font-size: $type-size-5;
+  margin: 0.6rem 0 0;
 }
 
 /* One line per entry: title on the left, dates right-aligned and tabular, so
@@ -276,26 +313,20 @@ img.author__avatar {
   justify-content: space-between;
   align-items: baseline;
   gap: 1rem;
-  margin: 0 0 0.2rem;
+  margin: 0.55rem 0 0.2rem;
+}
+
+.cv-row strong {
+  font-weight: 600;
 }
 
 .cv-dates {
+  font-family: $sans-ui;
   flex: none;
+  font-size: 0.78rem;
   color: $gray;
-  font-size: $type-size-6;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
-}
-
-@media (max-width: 37.5em) {
-  .cv-row {
-    display: block;
-  }
-
-  .cv-dates {
-    display: block;
-    font-size: $type-size-7;
-  }
 }
 
 /* ------------------------------------------------------------------ print */
@@ -350,13 +381,14 @@ img.author__avatar {
   }
 
   #main,
-  .page {
+  .archive {
     margin-left: 0 !important;
     width: 100% !important;
     max-width: none !important;
   }
 
-  .page__content a {
+  .page__content a,
+  .archive a {
     color: inherit;
     text-decoration: none;
   }
@@ -369,6 +401,38 @@ img.author__avatar {
   .cv-row,
   .lab-table tr {
     break-inside: avoid;
+  }
+}
+
+/* ------------------------------------------------------------------ narrow */
+
+@media (max-width: 37.5em) {
+  .cert-grid,
+  .project-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .lab-table {
+    table-layout: auto;
+
+    th:first-child,
+    td:first-child {
+      width: auto;
+      white-space: normal;
+    }
+
+    th:last-child,
+    td:last-child {
+      width: auto;
+    }
+  }
+
+  .cv-row {
+    display: block;
+  }
+
+  .cv-dates {
+    display: block;
   }
 }
 
