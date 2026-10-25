@@ -289,8 +289,13 @@ for (const path of PAGES) {
     }
 
     if (path === "/projects/") {
-      const cards = (html.match(/class="project-card"/g) || []).length;
-      record("projects renders cards", cards >= 7, `${cards} cards`);
+      const rows = (html.match(/class="work-item"/g) || []).length;
+      record("projects renders every repository", rows >= 7, `${rows} rows`);
+      record(
+        "projects has no card chrome",
+        !/class="project-card"|class="chip"/.test(html),
+        /class="project-card"|class="chip"/.test(html) ? "card chrome still present" : "",
+      );
     }
   } catch (err) {
     record(`GET ${path}`, false, err.message);
