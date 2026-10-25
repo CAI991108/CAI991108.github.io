@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en" data-dir="paper" data-type="serif" data-palette="paper">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prototype — academic layout</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+  /* ---------------------------------------------------------------- base */
+  :root {
+    --ui: "Inter", -apple-system, "Segoe UI", sans-serif;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans: "Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
+    --measure: 64ch;
+  }
+
+  html[data-palette="paper"] {
+    --bg: #fbfaf7; --ink: #1b1a18; --muted: #6d6a64; --rule: #e4e0d8; --link: #2f5d8a;
+  }
+  html[data-palette="slate"] {
+    --bg: #ffffff; --ink: #1f2328; --muted: #667085; --rule: #e6e8ec; --link: #4f6d99;
+  }
+  html[data-palette="ink"] {
+    --bg: #ffffff; --ink: #111111; --muted: #6f6f6f; --rule: #e8e8e8; --link: #111111;
+  }
+
+  html[data-type="serif"] body { font-family: var(--serif); }
+  html[data-type="sans"] body { font-family: var(--sans); }
+  html[data-type="mixed"] body { font-family: var(--sans); }
+  html[data-type="mixed"] h1,
+  html[data-type="mixed"] .lede,
+  html[data-type="mixed"] .work-item h3 { font-family: var(--serif); }
+  html[data-type="serif"] .work-item h3 { font-family: var(--serif); }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  a {
+    color: var(--link);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: color-mix(in srgb, var(--link) 34%, transparent);
+    text-underline-offset: 0.18em;
+    transition: text-decoration-color 120ms ease;
+  }
+  a:hover { text-decoration-color: currentColor; }
+
+  /* -------------------------------------------------------------- layout */
+  .wrap {
+    display: grid;
+    grid-template-columns: 190px minmax(0, 1fr);
+    gap: 3.5rem;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 4.5rem 2rem 6rem;
+  }
+
+  html[data-dir="paper"] .wrap,
+  html[data-dir="distill"] .wrap {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: calc(var(--measure) + 4rem);
+  }
+  html[data-dir="paper"] .side,
+  html[data-dir="distill"] .side { display: none; }
+
+  main { max-width: var(--measure); }
+
+  /* --------------------------------------------------------------- sidebar */
+  .side { font-family: var(--ui); font-size: 0.82rem; line-height: 1.5; }
+  .side img {
+    width: 104px; height: 104px; border-radius: 50%;
+    object-fit: cover; display: block; margin-bottom: 0.9rem;
+  }
+  .side .who { font-weight: 600; color: var(--ink); }
+  .side .role { color: var(--muted); margin: 0.15rem 0 1rem; }
+  .side ul { list-style: none; margin: 0; padding: 0; }
+  .side li + li { margin-top: 0.3rem; }
+
+  /* ----------------------------------------------------------------- hero */
+  h1 {
+    font-size: 2.1rem;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    font-weight: 600;
+    margin: 0 0 0.45rem;
+  }
+  html[data-dir="faculty"] h1 { font-size: 1.55rem; letter-spacing: -0.008em; }
+  html[data-dir="distill"] h1 { font-size: 2.9rem; letter-spacing: -0.025em; }
+
+  .role {
+    font-family: var(--ui);
+    font-size: 0.86rem;
+    line-height: 1.55;
+    color: var(--muted);
+    margin: 0 0 1.6rem;
+  }
+  .role strong { color: var(--ink); font-weight: 500; }
+
+  .lede { font-size: 1.06rem; margin: 0 0 1.1rem; }
+  html[data-dir="distill"] .lede { font-size: 1.18rem; line-height: 1.58; }
+
+  .now {
+    font-family: var(--ui);
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin: 0 0 2.4rem;
+    padding-left: 0.85rem;
+    border-left: 2px solid color-mix(in srgb, var(--muted) 40%, transparent);
+  }
+  .now b { color: var(--ink); font-weight: 500; }
+
+  .meta {
+    font-family: var(--ui);
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin: 2.2rem 0 0;
+  }
+  .meta a { color: var(--ink); }
+
+  /* ------------------------------------------------------------- sections */
+  section {
+    margin-top: 2.6rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--rule);
+  }
+  html[data-dir="distill"] section { margin-top: 3.6rem; }
+  html[data-dir="faculty"] section { margin-top: 2rem; }
+
+  h2 {
+    font-family: var(--ui);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 1.1rem;
+  }
+
+  .item { padding: 0.9rem 0; border-bottom: 1px solid var(--rule); }
+  .item:last-child { border-bottom: 0; padding-bottom: 0; }
+  html[data-dir="faculty"] .item { padding: 0.65rem 0; }
+
+  .item h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.2rem;
+    letter-spacing: -0.005em;
+  }
+  .item h3 a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+  }
+  .item h3 a:hover { border-bottom-color: var(--link); }
+
+  .item p { margin: 0 0 0.3rem; }
+
+  .stack {
+    font-family: var(--ui);
+    font-size: 0.76rem;
+    letter-spacing: 0.01em;
+    color: var(--muted);
+  }
+
+  .inline { margin: 0; }
+  .inline + .inline { margin-top: 0.4rem; }
+  .inline .label {
+    font-family: var(--ui);
+    font-size: 0.76rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .inline .sep {
+    color: var(--muted);
+    opacity: 0.6;
+    margin: 0 0.55rem;
+  }
+
+  /* ------------------------------------------------------------ the bar */
+  .bar {
+    position: fixed; left: 16px; bottom: 16px; z-index: 20;
+    display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid #d9dde3;
+    border-radius: 10px;
+    box-shadow: 0 6px 24px rgba(20, 30, 45, 0.10);
+    font-family: var(--ui); font-size: 12px; color: #3d4652;
+    backdrop-filter: blur(6px);
+    max-width: calc(100vw - 32px);
+  }
+  html[data-bar="off"] .bar { display: none; }
+
+  .bar .group { display: flex; gap: 6px; align-items: center; }
+  .bar .group > span { color: #8b93a1; letter-spacing: 0.06em; text-transform: uppercase; font-size: 10px; }
+  .bar button {
+    font: inherit; padding: 4px 9px; border-radius: 6px;
+    border: 1px solid #d9dde3; background: #fff; color: #3d4652; cursor: pointer;
+  }
+  .bar button:hover { border-color: #b9c0ca; }
+  .bar button[aria-pressed="true"] { background: #1f2328; border-color: #1f2328; color: #fff; }
+
+  /* --------------------------------------------------------------- mobile */
+  @media (max-width: 760px) {
+    .wrap { grid-template-columns: minmax(0, 1fr); gap: 1.6rem; padding: 2.2rem 1.2rem 7rem; }
+    .side { display: flex; align-items: center; gap: 0.9rem; }
+    .side img { width: 56px; height: 56px; margin: 0; }
+    html[data-dir="paper"] .side,
+    html[data-dir="distill"] .side { display: none; }
+    h1 { font-size: 1.8rem; }
+    html[data-dir="distill"] h1 { font-size: 2.1rem; }
+    .bar { left: 8px; right: 8px; bottom: 8px; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <aside class="side">
+    <img src="/profile.webp" alt="">
+    <div class="who">Zijin CAI</div>
+    <p class="role">PhD in AI, CUHK-Shenzhen</p>
+    <ul>
+      <li><a href="#">Email</a></li>
+      <li><a href="#">GitHub</a></li>
+      <li><a href="#">Hugging Face</a></li>
+      <li><a href="#">WakaTime</a></li>
+      <li><a href="#">CV (PDF)</a></li>
+    </ul>
+  </aside>
+
+  <main>
+    <h1>Zijin CAI 蔡子晋</h1>
+    <p class="role"><strong>PhD in Artificial Intelligence</strong>, CUHK-Shenzhen · Research Fellow, CUHK(SZ)–CROSS Joint Laboratory</p>
+
+    <p class="lede">I work on multimodal perception and generative models: teaching models to see what happens over time, and making diffusion fine-tuning cheap enough to iterate on. Most of what I build turns into research infrastructure — pipelines, agent tooling and evaluation harnesses that make the research repeatable. Before this, an MSc in Data Science at CUHK-Shenzhen and a BSc in Economics at Manchester.</p>
+
+    <p class="now"><b>Now</b> — shipping omarchy · dsh, building AI research infrastructure, and multimodal agents that have to hold state.</p>
+
+    <section>
+      <h2>Selected work</h2>
+
+      <div class="item">
+        <h3><a href="#">omarchy-NTE</a></h3>
+        <p>A Catppuccin Mocha bundle for Omarchy — a theme-following fcitx5 hook, local DSH plugins, and a DSH-to-WakaTime bridge.</p>
+        <p class="stack">JavaScript · Hyprland · Waybar</p>
+      </div>
+
+      <div class="item">
+        <h3><a href="#">Robotic-Action-Frame-Prediction-with-InstructPix2Pix</a></h3>
+        <p>An InstructPix2Pix fine-tune that predicts a robot's future action frames at 256×256.</p>
+        <p class="stack">Python · PyTorch · Diffusion</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Laboratory</h2>
+      <p class="inline"><span class="label">CrossLedger</span> and <span class="label">CrossBooks</span> — ledger automation and document verification for the CROSS Joint Laboratory. <a href="#">How they are built →</a></p>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <p class="inline"><span class="label">Research</span> — multimodal perception, generative models, LLM agents, evaluation</p>
+      <p class="inline"><span class="label">Engineering</span> — Python, PyTorch, CUDA, TypeScript</p>
+      <p class="inline"><span class="label">Infrastructure</span> — Linux, Docker, Postgres</p>
+    </section>
+
+    <p class="meta">
+      <a href="mailto:zijincai@link.cuhk.edu.cn">zijincai@link.cuhk.edu.cn</a> ·
+      <a href="#">GitHub</a> · <a href="#">Hugging Face</a> · <a href="#">WakaTime</a> ·
+      <a href="#">CV</a> · <a href="#">All projects</a>
+    </p>
+  </main>
+</div>
+
+<div class="bar" role="group" aria-label="prototype controls">
+  <div class="group"><span>direction</span>
+    <button data-dir="paper">A · Paper</button>
+    <button data-dir="faculty">B · Faculty</button>
+    <button data-dir="distill">C · Distill</button>
+  </div>
+  <div class="group"><span>type</span>
+    <button data-type="serif">Serif body</button>
+    <button data-type="sans">Sans body</button>
+    <button data-type="mixed">Serif headings</button>
+  </div>
+  <div class="group"><span>palette</span>
+    <button data-palette="paper">Paper</button>
+    <button data-palette="slate">Slate</button>
+    <button data-palette="ink">Ink</button>
+  </div>
+</div>
+
+<script>
+  const root = document.documentElement;
+  const presets = {
+    paper:   { dir: "paper",   type: "serif", palette: "paper" },
+    faculty: { dir: "faculty", type: "sans",  palette: "slate" },
+    distill: { dir: "distill", type: "mixed", palette: "ink" },
+  };
+
+  const params = new URLSearchParams(location.search);
+  for (const key of ["dir", "type", "palette", "bar"]) {
+    if (params.has(key)) root.dataset[key] = params.get(key);
+  }
+
+  function paint() {
+    for (const btn of document.querySelectorAll(".bar button")) {
+      const key = btn.dataset.dir ? "dir" : btn.dataset.type ? "type" : "palette";
+      btn.setAttribute("aria-pressed", String(root.dataset[key] === btn.dataset[key]));
+    }
+  }
+
+  document.querySelector(".bar").addEventListener("click", (event) => {
+    const btn = event.target.closest("button");
+    if (!btn) return;
+    if (btn.dataset.dir) Object.assign(root.dataset, presets[btn.dataset.dir]);
+    if (btn.dataset.type) root.dataset.type = btn.dataset.type;
+    if (btn.dataset.palette) root.dataset.palette = btn.dataset.palette;
+    paint();
+  });
+
+  paint();
+</script>
+</body>
+</html>
