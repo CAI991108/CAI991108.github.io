@@ -9,7 +9,11 @@
 /* ---------------------------------------------------------------- typography */
 
 /* Serif at 17px, six tenths of a line apart, measured in characters rather
- * than pixels: the column is what a reader feels, not the width. */
+ * than pixels: the column is what a reader feels, not the width.
+ *
+ * 66ch, not 62: `ch` is the width of "0", and Source Serif's average character
+ * is wider than its zero, so 62ch rendered at 57 characters a line. 66ch lands
+ * at ~61, inside the 60–72 the spec asks for. */
 body {
   font-size: 17px;
   line-height: 1.6;
@@ -17,7 +21,7 @@ body {
 
 .page__inner-wrap,
 .archive {
-  max-width: 62ch;
+  max-width: 66ch;
 }
 
 h1,
