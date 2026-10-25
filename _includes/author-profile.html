@@ -15,7 +15,7 @@
   </div>
 
   <div class="author__content">
-    <h3 class="author__name">{{ author.name }}</h3>
+    <h3 class="author__name">{% if page.lang == "zh-Hans" %}{{ author.alternate_name | default: author.name }}{% else %}{{ author.name }}{% endif %}</h3>
     {% if author.pronouns %}<p class="author__pronouns">{{ author.pronouns }}</p>{% endif %}
     {% assign author_bio = author.bio %}{% if page.lang == "zh-Hans" %}{% assign author_bio = author.bio_zh | default: author.bio %}{% endif %}
     {% if author_bio %}<p class="author__bio">{{ author_bio }}</p>{% endif %}
