@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "onchange": "^7.1.0",
+    "subset-font": "^2.9.0",
     "uglify-js": "^3.17.4"
   },
   "scripts": {
@@ -39,6 +40,7 @@
     "build:js": "npm run uglify",
     "check": "node scripts/check-site.mjs",
     "preflight": "node scripts/preflight.mjs",
+    "fonts": "node scripts/make-cjk-font.mjs",
     "shoot": "node scripts/shoot.mjs",
     "preview": "node scripts/preview.mjs",
     "cv:pdf": "node scripts/make-cv-pdf.mjs"

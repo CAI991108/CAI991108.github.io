@@ -13,6 +13,7 @@
  *   2. every {% include %} names a file that exists in _includes/
  *   3. assets/css/main.scss still compiles
  *   4. the CV PDF is not older than the CV page it was printed from
+ *   5. the Chinese webfont subset is not older than the Chinese copy
  *
  * The front-matter check is a structural lint, not a YAML parser: it catches
  * what actually goes wrong here (missing `---`, tab indentation, a key typo
@@ -225,12 +226,56 @@ function cvPdfGate() {
   );
 }
 
+// --------------------------------------------------------------- cjk subset --
+
+/* The Chinese face is subset to the characters the site sets, so it goes stale
+ * the moment Chinese copy changes and nobody re-runs the generator. A missing
+ * glyph does not fail loudly: it falls back to a system font on that one
+ * character, mid-sentence. Hence this gate.
+ *
+ * Add a file here when it starts carrying Chinese copy. */
+const ZH_COPY = [
+  "_pages/zh",
+  "_data/projects.yml",
+  "_data/navigation.yml",
+  "_data/ui-text.yml",
+  "_includes/lab-systems.html",
+  "_includes/masthead.html",
+  "_includes/author-profile.html",
+  "_config.yml",
+];
+const ZH_FONTS = ["assets/fonts/noto-serif-sc-400.woff2", "assets/fonts/noto-serif-sc-600.woff2"];
+
+function cjkFontGate() {
+  for (const font of ZH_FONTS) {
+    if (!statSync(join(ROOT, font), { throwIfNoEntry: false })) {
+      record("Chinese subset exists", false, `${font} is missing — run \`npm run fonts\``);
+      return;
+    }
+  }
+
+  const copyTime = Math.max(0, ...ZH_COPY.flatMap((p) => gitCommits(p)[0]?.time ?? 0));
+  const fontTime = Math.max(
+    0,
+    ...ZH_FONTS.map((f) => Math.max(gitCommits(f)[0]?.time ?? 0, Math.floor(statSync(join(ROOT, f)).mtimeMs / 1000))),
+  );
+
+  record(
+    "Chinese subset is current",
+    fontTime >= copyTime,
+    fontTime >= copyTime
+      ? new Date(fontTime * 1000).toISOString().slice(0, 16).replace("T", " ")
+      : "Chinese copy changed since the font was cut — run \`npm run fonts\` and commit the .woff2 files",
+  );
+}
+
 // ------------------------------------------------------------------ report --
 
 frontMatterGate();
 includeGate();
 sassGate();
 cvPdfGate();
+cjkFontGate();
 
 let failed = 0;
 for (const { name, ok, skipped, detail } of results) {

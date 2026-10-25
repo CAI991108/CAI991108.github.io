@@ -13,3 +13,5 @@ node_modules
 package-lock.json
 # Full-res avatar source (regenerate images/profile.webp with scripts/make-assets.py)
 images/profile.src.jpg
+# Full Noto Serif SC variable font (24 MB); regenerate the subset with npm run fonts
+assets/fonts/src/

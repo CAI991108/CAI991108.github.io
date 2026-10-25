@@ -1,0 +1,33 @@
+{% comment %}
+  The Chinese web face, and only on Chinese pages: an English visitor pays
+  nothing for it.
+
+  The file is a subset cut from Noto Serif SC (SIL OFL 1.1) by
+  scripts/make-cjk-font.mjs. The full face is 15.7 MB as woff2 and Google's own
+  slicing still costs 5.75 MB per weight, so for a few hundred characters the
+  only sane shape is a subset of exactly those.
+
+  "Noto Serif SC" is named in $serif right after Source Serif 4: the Latin face
+  has no Han glyphs at all, so Chinese text falls through to this one — and
+  because it is a real webfont it looks the same on every machine instead of
+  being whatever the OS calls a serif today.
+{% endcomment %}
+{% if page.lang == "zh-Hans" %}
+<link rel="preload" href="{{ '/assets/fonts/noto-serif-sc-400.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+<style>
+  @font-face {
+    font-family: "Noto Serif SC";
+    src: url("{{ '/assets/fonts/noto-serif-sc-400.woff2' | relative_url }}") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Noto Serif SC";
+    src: url("{{ '/assets/fonts/noto-serif-sc-600.woff2' | relative_url }}") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+</style>
+{% endif %}
