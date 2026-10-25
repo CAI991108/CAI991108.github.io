@@ -104,6 +104,7 @@ img.author__avatar {
   margin: 1rem 0 1.2rem;
   border-collapse: collapse;
   font-size: $type-size-6;
+  table-layout: fixed;
 
   th {
     padding: 0.4rem 0.6rem;
@@ -121,8 +122,17 @@ img.author__avatar {
     line-height: 1.5;
   }
 
+  /* System names are short and fixed; the description is the column that
+   * wants the room. */
+  th:first-child,
   td:first-child {
+    width: 18%;
     white-space: nowrap;
+  }
+
+  th:last-child,
+  td:last-child {
+    width: 34%;
   }
 
   .chip {
@@ -227,6 +237,22 @@ img.author__avatar {
   .cert-grid,
   .project-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Fixed column widths only make sense when there is a column to spare. */
+  .lab-table {
+    table-layout: auto;
+
+    th:first-child,
+    td:first-child {
+      width: auto;
+      white-space: normal;
+    }
+
+    th:last-child,
+    td:last-child {
+      width: auto;
+    }
   }
 }
 
