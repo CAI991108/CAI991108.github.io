@@ -3,6 +3,7 @@ layout: archive
 title: "CV"
 permalink: /cv/
 author_profile: true
+description: "CV: PhD in Artificial Intelligence at CUHK-Shenzhen, MSc in Data Science, and a BSc in Economics from Manchester."
 redirect_from:
   - /resume
 ---

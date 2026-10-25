@@ -3,6 +3,7 @@ layout: single
 title: "Research"
 permalink: /research/
 author_profile: true
+description: "Research directions, and the two systems built for the CUHK(SZ)–CROSS Joint Laboratory: CrossLedger and CrossBooks."
 ---
 
 I am a PhD student in Artificial Intelligence at CUHK-Shenzhen, supervised by [Prof. Jianhua Huang](https://sai.cuhk.edu.cn/en/teacher/108), and a Research Fellow at the [CUHK(SZ)–CROSS Joint Laboratory](https://github.com/CUHKSZ-CROSS-Lab) — a joint lab of the School of Artificial Intelligence and Shenzhen Kuafu-Yundun Technology. Before that: an MSc in Data Science here, and a BSc in Economics at Manchester.
