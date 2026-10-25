@@ -1,119 +1,52 @@
-# Academic Pages
-**Academic Pages is a Github Pages template for academic websites.**
+# cai991108.github.io
 
-![Academic Pages template example](images/homepage.png "Academic Pages template example")
+Source of <https://cai991108.github.io> — an academic site: research, projects and a CV, built on Jekyll with the academicpages theme and published by GitHub Pages from `master`.
 
-# Getting Started
+## Pages
 
-1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
-1. Click the "Use this template" button in the top right.
-1. On the "New repository" page, enter your repository name as "[your GitHub username].github.io", which will also be your website's URL.
-1. Set site-wide configuration and add your content.
-1. Upload any files (like PDFs, .zip files, etc.) to the `files/` directory. They will appear at https://[your GitHub username].github.io/files/example.pdf.
-1. Check status by going to the repository settings, in the "GitHub pages" section
-1. (Optional) Use the Jupyter notebooks or python scripts in the `markdown_generator` folder to generate markdown files for publications and talks from a TSV file.
+| URL | Source | Holds |
+| :-- | :-- | :-- |
+| `/` | `_pages/about.md` | the front page: name, what I work on, four selected projects, the lab systems, skills, awards |
+| `/research/` | `_pages/research.md` | directions and the two CROSS Joint Lab systems |
+| `/projects/` | `_pages/projects.html` | every maintained repo, from `_data/projects.yml` |
+| `/cv/` | `_pages/cv.md` | the CV; `files/cv.pdf` is printed from it |
 
-See more info at https://academicpages.github.io/
+The lab table (`_includes/lab-systems.html`) and the project cards (`_includes/project-cards.html`) are shared, so the homepage and the two inner pages cannot drift apart.
 
-## Running locally
+## Making a change
 
-When you are initially working your website, it is very useful to be able to preview the changes locally before pushing them to GitHub. To work locally you will need to:
+Edit the file, push to `master`, wait about 40 seconds. There is no local build step and no CI: GitHub Pages runs Jekyll itself.
 
-1. Clone the repository and made updates as detailed above.
-1. Make sure you have ruby-dev, bundler, and nodejs installed
-    
-    On most Linux distribution and [Windows Subsystem Linux](https://learn.microsoft.com/en-us/windows/wsl/about) the command is:
-    ```bash
-    sudo apt install ruby-dev ruby-bundler nodejs
-    ```
-    On MacOS the commands are:
-    ```bash
-    brew install ruby
-    brew install node
-    gem install bundler
-    ```
-1. Run `bundle install` to install ruby dependencies. If you get errors, delete Gemfile.lock and try again.
-1. Run `jekyll serve -l -H localhost` to generate the HTML and serve it from `localhost:4000` the local server will automatically rebuild and refresh the pages on change.
+Three things are not obvious:
 
-If you are running on Linux it may be necessary to install some additional dependencies prior to being able to run locally: `sudo apt install build-essential gcc make`
+- **No Ruby on this machine.** To check Sass before pushing, strip the front matter and run `npx sass --load-path=_sass` against `assets/css/main.scss`.
+- **Colours and font stacks live in `_sass/_palette.scss`**, imported right after the theme's `_variables.scss`. The theme partials stay untouched so upstream can still be merged; site rules go in `_sass/_overrides.scss`.
+- **The homepage has no `title:` in its front matter.** With one, the theme renders an `<h1>` and appends the site title to `<title>`, duplicating the name. The `<h1>` is written by hand in `_pages/about.md` instead.
 
-## Using Docker
-
-Working from a different OS, or just want to avoid installing dependencies? You can use the provided `Dockerfile` to build a container that will run the site for you if you have [Docker](https://www.docker.com/) installed.
-
-Start by build the container:
+## Checks
 
 ```bash
-docker build -t jekyll-site .
+node scripts/check-site.mjs                                   # against the live site
+SITE_URL=http://127.0.0.1:4000 node scripts/check-site.mjs    # against a local serve
 ```
 
-Next, run the container:
+It checks every page for a 200, for broken same-origin sub-resources, for leftover placeholder copy, for a description meta, and for layout overflow at 390px (that last one needs Chrome and is skipped when it is absent). It also pins what has to *stay* true: the brand colour in the built CSS, the CJK font stack, valid Person JSON-LD, a downloadable CV PDF, and seven retired template URLs still answering 404.
+
+## Assets
+
 ```bash
-docker run -p 4000:4000 --rm -v $(pwd):/usr/src/app jekyll-site
+python scripts/make-assets.py    # favicons, share card, square avatar
 ```
 
-To run the `docker run` command on Windows, you need to adjust the syntax for the volume mapping (`-v`) as Windows uses different path formats. Here's how to run your command on Windows:
+The full-resolution avatar source is deliberately not committed (`images/profile.src.jpg`, gitignored); put it back before regenerating `images/profile.webp`.
 
-### Steps for Windows:
-1. **Check Docker Installation**: Ensure Docker is installed and running.
-2. **Adjust Path for Volume Mapping**:
+The CV PDF is printed from the live page, so it cannot disagree with it:
 
-   - On Windows, replace `$(pwd)` with the full absolute path to your current directory. For example:
-
-     ```bash
-     -v C:\path\to\your\site:/usr/src/app
-     ```
-
-### Full Command Example:
 ```bash
-docker run -p 4000:4000 --rm -v C:\path\to\your\site:/usr/src/app jekyll-site
+chrome --headless=new --no-pdf-header-footer \
+  --print-to-pdf=files/cv.pdf https://cai991108.github.io/cv/
 ```
 
-### Things to Keep in Mind:
-1. **Use PowerShell**:
-   - If you are using PowerShell, you can use `${PWD}` for the current directory:
-     ```bash
-     docker run -p 4000:4000 --rm -v ${PWD}:/usr/src/app jekyll-site
-     ```
+## Licence
 
-2. **Enable Docker File Sharing**:
-   - If your volume doesn't map correctly, ensure Docker has access to the drive where your project resides. To do this:
-     - Open Docker Desktop.
-     - Go to *Settings* → *Resources* → *File Sharing*.
-     - Add your drive (e.g., `C:`).
-
-3. **Run in Command Prompt or PowerShell**:
-   - In *Command Prompt*:
-   
-     ```bash
-     docker run -p 4000:4000 --rm -v C:\path\to\your\site:/usr/src/app jekyll-site
-     ```
-   - In *PowerShell*:
-
-     ```bash
-     docker run -p 4000:4000 --rm -v ${PWD}:/usr/src/app jekyll-site
-     ```
-
-# Maintenance
-
-Bug reports and feature requests to the template should be [submitted via GitHub](https://github.com/academicpages/academicpages.github.io/issues/new/choose). For questions concerning how to style the template, please feel free to start a [new discussion on GitHub](https://github.com/academicpages/academicpages.github.io/discussions).
-
-This repository was forked (then detached) by [Stuart Geiger](https://github.com/staeiou) from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/), which is © 2016 Michael Rose and released under the MIT License (see LICENSE.md). It is currently being maintained by [Robert Zupko](https://github.com/rjzupkoii) and additional maintainers would be welcomed.
-
-## Bugfixes and enhancements
-
-If you have bugfixes and enhancements that you would like to submit as a pull request, you will need to [fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) this repository as opposed to using it as a template. This will also allow you to [synchronize your copy](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) of template to your fork as well.
-
-Unfortunately, one logistical issue with a template theme like Academic Pages that makes it a little tricky to get bug fixes and updates to the core theme. If you use this template and customize it, you will probably get merge conflicts if you attempt to synchronize. If you want to save your various .yml configuration files and markdown files, you can delete the repository and fork it again. Or you can manually patch.
-
----
-<div align="center">
-    
-![pages-build-deployment](https://github.com/academicpages/academicpages.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)
-[![GitHub contributors](https://img.shields.io/github/contributors/academicpages/academicpages.github.io.svg)](https://github.com/academicpages/academicpages.github.io/graphs/contributors)
-[![GitHub release](https://img.shields.io/github/v/release/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io/releases/latest)
-[![GitHub license](https://img.shields.io/github/license/academicpages/academicpages.github.io?color=blue)](https://github.com/academicpages/academicpages.github.io/blob/master/LICENSE)
-
-[![GitHub stars](https://img.shields.io/github/stars/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io)
-[![GitHub forks](https://img.shields.io/github/forks/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io/fork)
-</div>
+Site content is mine. The theme is MIT, from [academicpages](https://github.com/academicpages/academicpages.github.io).

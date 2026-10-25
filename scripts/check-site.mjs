@@ -85,6 +85,13 @@ async function checkPage(path) {
   const stub = html.match(PLACEHOLDER);
   record(`${path} not a stub`, !stub, stub ? `found "${stub[0]}"` : "");
 
+  const desc = html.match(/<meta name="description" content="([^"]*)"/);
+  record(
+    `${path} has a description`,
+    !!desc && desc[1].trim().length > 20,
+    desc ? desc[1].slice(0, 58) + "…" : "missing",
+  );
+
   return { html, status: res.status };
 }
 
@@ -249,6 +256,18 @@ for (const path of PAGES) {
       record("home drops the greeting", !/Hi there, this is/i.test(html), /Hi there, this is/i.test(html) ? "greeting still there" : "");
       const homeCards = (html.match(/class="project-card"/g) || []).length;
       record("home shows four projects", homeCards === 4, `${homeCards} cards`);
+
+      const ogImage = (html.match(/property="og:image" content="([^"]+)"/) || [])[1];
+      record("home has og:image", /og-card\.png/.test(ogImage || ""), ogImage || "missing");
+      record("home has a twitter card", /name="twitter:card" content="summary_large_image"/.test(html), "");
+      if (ogImage) {
+        const img = await fetch(new URL(ogImage, BASE));
+        record(
+          "og:image resolves",
+          img.status === 200 && /image\//.test(img.headers.get("content-type") || ""),
+          `${img.status} ${img.headers.get("content-type")}`,
+        );
+      }
     }
 
     if (path === "/cv/") {
@@ -321,6 +340,28 @@ try {
   record("css carries the CJK stack", hasCjk, hasCjk ? "Noto Sans SC" : "Noto Sans SC missing from main.css");
 } catch (err) {
   record("css carries the brand colour", false, err.message);
+}
+
+// The Person entity has to be parseable JSON with a real sameAs list.
+try {
+  const html = await (await fetch(BASE + "/")).text();
+  const block = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  let ok = false;
+  let detail = "no ld+json block";
+  if (block) {
+    try {
+      const data = JSON.parse(block[1]);
+      const sameAs = Array.isArray(data.sameAs) ? data.sameAs : [];
+      const hasNull = /\bnull\b/.test(block[1]);
+      ok = data["@type"] === "Person" && sameAs.length >= 3 && !hasNull;
+      detail = `@type=${data["@type"]} sameAs=${sameAs.length}${hasNull ? " contains null" : ""}`;
+    } catch (err) {
+      detail = `invalid JSON: ${err.message}`;
+    }
+  }
+  record("person schema is valid", ok, detail);
+} catch (err) {
+  record("person schema is valid", false, err.message);
 }
 
 // The CV PDF is printed from /cv/ and linked from the sidebar, so it has to be

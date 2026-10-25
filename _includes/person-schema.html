@@ -1,0 +1,29 @@
+{% comment %}
+  One Person entity for the whole site.
+
+  Replaces the template's two JSON-LD blocks, which emitted an Organization
+  whose "logo" was the 1200x630 social card, and a Person whose "sameAs"
+  serialised to null because site.social.links was never set.
+
+  Every scalar goes through jsonify, so a quote or an ampersand in any of them
+  cannot break the JSON. The site URL and the university sit in "url" and
+  "affiliation" rather than being repeated in "sameAs", which is reserved for
+  pages that identify the same person elsewhere.
+{% endcomment %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": {{ site.author.name | default: site.name | jsonify }},
+  "alternateName": {{ site.author.alternate_name | jsonify }},
+  "url": {{ site.url | append: "/" | jsonify }},
+  "image": {{ "/images/profile.webp" | prepend: site.url | jsonify }},
+  "jobTitle": {{ site.author.job_title | jsonify }},
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "The Chinese University of Hong Kong, Shenzhen",
+    "url": "https://www.cuhk.edu.cn/"
+  },
+  "sameAs": {{ site.social.links | jsonify }}
+}
+</script>

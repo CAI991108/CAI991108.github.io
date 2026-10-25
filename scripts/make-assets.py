@@ -19,7 +19,7 @@ The mark is a "Z" polyline on the site's mid-tone blue. Everything is drawn at
 
 from pathlib import Path
 
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent.parent
 IMAGES = ROOT / "images"
@@ -93,10 +93,47 @@ def build_avatar() -> None:
     ).save(IMAGES / "profile.webp", quality=82, method=6)
 
 
+def build_og_card() -> None:
+    """1200x630 share card: the same mark, palette and words as the site."""
+    W, H = 1200, 630
+    card = Image.new("RGB", (W, H), (255, 255, 255))
+    d = ImageDraw.Draw(card)
+
+    # Brand rule down the left edge, then the mark on the right.
+    brand_rgb = BRAND[:3]
+    d.rectangle([(0, 0), (10, H)], fill=brand_rgb)
+    mark = draw_mark(170, rounded=True)
+    card.paste(mark, (952, 232), mark)
+
+    cjk = "C:/Windows/Fonts/NotoSansSC-VF.ttf"
+    try:
+        title = ImageFont.truetype(cjk, 68)
+        title.set_variation_by_name("Bold")
+        body = ImageFont.truetype(cjk, 27)
+        body.set_variation_by_name("Regular")
+        small = ImageFont.truetype(cjk, 24)
+        small.set_variation_by_name("Regular")
+    except OSError:
+        title = body = small = ImageFont.load_default()
+
+    ink = (31, 39, 51)
+    muted = (111, 119, 135)
+
+    d.text((96, 196), "Zijin CAI \u8521\u5b50\u664b", font=title, fill=ink)
+    d.text((96, 302), "PhD in Artificial Intelligence \u00b7 CUHK-Shenzhen", font=body, fill=brand_rgb)
+    d.text((96, 344), "Research Fellow \u00b7 CUHK(SZ)\u2013CROSS Joint Laboratory", font=body, fill=muted)
+
+    d.line([(96, 486), (1104, 486)], fill=(232, 235, 240), width=2)
+    d.text((96, 514), "cai991108.github.io", font=small, fill=muted)
+
+    card.save(IMAGES / "og-card.png", optimize=True)
+
+
 if __name__ == "__main__":
     build_icons()
     build_avatar()
+    build_og_card()
     for p in sorted(IMAGES.glob("favicon*")) + sorted(IMAGES.glob("apple-touch*")) + sorted(
-        IMAGES.glob("profile.webp")
+        list(IMAGES.glob("profile.webp")) + list(IMAGES.glob("og-card.png"))
     ):
         print(f"{p.relative_to(ROOT)}  {p.stat().st_size / 1024:.1f} KB")
