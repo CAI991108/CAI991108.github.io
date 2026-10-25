@@ -276,8 +276,25 @@ img.author__avatar {
 
 /* The CV PDF is printed from this same page, so the print sheet is the CV and
  * nothing else: no sidebar, no masthead, no download link pointing back at
- * itself. */
+ * itself. On screen the print header is invisible; on paper it replaces the
+ * page title "CV", which says nothing a reader of a CV needs. */
+.cv-print-header {
+  display: none;
+}
+
+@page {
+  size: A4;
+  margin: 14mm 15mm;
+}
+
 @media print {
+  body {
+    /* The fixed masthead leaves a 70px hole at the top of the page when it is
+     * hidden; this closes it. */
+    padding-top: 0 !important;
+    font-size: 15px;
+  }
+
   .sidebar,
   .masthead,
   .page__footer,
@@ -285,8 +302,25 @@ img.author__avatar {
   .page__related,
   .breadcrumbs,
   .cv-download,
-  .section-more {
+  .section-more,
+  .page__title {
     display: none !important;
+  }
+
+  .cv-print-header {
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .cv-print-header h1 {
+    margin: 0 0 0.15rem;
+    font-size: 1.5rem;
+  }
+
+  .cv-print-header p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #444;
   }
 
   #main,

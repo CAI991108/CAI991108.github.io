@@ -9,6 +9,11 @@ redirect_from:
 
 {% include base_path %}
 
+<div class="cv-print-header">
+  <h1>Zijin CAI 蔡子晋</h1>
+  <p>PhD in Artificial Intelligence, CUHK-Shenzhen · Research Fellow, CUHK(SZ)–CROSS Joint Laboratory</p>
+</div>
+
 <p class="cv-contact"><a href="mailto:zijincai@link.cuhk.edu.cn">zijincai@link.cuhk.edu.cn</a> · <a href="mailto:caizijin1999@hotmail.com">caizijin1999@hotmail.com</a> · <a href="https://cai991108.github.io/">cai991108.github.io</a></p>
 
 <p class="cv-download"><a href="{{ '/files/cv.pdf' | relative_url }}">Download this CV as a PDF</a></p>
