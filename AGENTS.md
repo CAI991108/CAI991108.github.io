@@ -2,6 +2,8 @@
 
 This repository is the source of `https://cai991108.github.io` — a Jekyll site on the academicpages template, published by GitHub Pages from `master`.
 
+Changing the site — page map, the three non-obvious gotchas, and how to verify a change: `README.md`.
+
 ## Agent skills
 
 ### Issue tracker
