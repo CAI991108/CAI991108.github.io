@@ -10,7 +10,7 @@ redirect_from:
 {% include base_path %}
 
 
-📧 <224040002@link.cuhk.edu.cn> / <caizijin1999@hotmail.com> | 📞 +86-13543750006
+📧 <zijincai@link.cuhk.edu.cn> / <caizijin1999@hotmail.com>
 
 ---
 
@@ -62,11 +62,18 @@ Extracurricular Activities
 
 Skills (exploring)
 ======
-**IT Skills: (see skillicons)** R, Python, STATA, LaTeX, Microsoft Office Suite, etc
+**IT Skills:** R, Python, STATA, LaTeX, Microsoft Office Suite, etc
 
 **Languages:** Mandarin (Native), English (Fluent), Cantonese (Native)
 
-<img align="center" src="https://skillicons.dev/icons?i=linux,ubuntu,windows,anaconda,pycharm,vim,py,r,latex,tensorflow,pytorch,sklearn,matlab,react,vue&theme=light" />
+<p>
+  <img alt="Python" src="https://img.shields.io/badge/Python-1e1e2e?style=flat-square&logo=python&logoColor=89b4fa" />
+  <img alt="R" src="https://img.shields.io/badge/R-1e1e2e?style=flat-square&logo=r&logoColor=89b4fa" />
+  <img alt="LaTeX" src="https://img.shields.io/badge/LaTeX-1e1e2e?style=flat-square&logo=latex&logoColor=89b4fa" />
+  <img alt="Linux" src="https://img.shields.io/badge/Linux-1e1e2e?style=flat-square&logo=linux&logoColor=89b4fa" />
+  <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-1e1e2e?style=flat-square&logo=pytorch&logoColor=89b4fa" />
+  <img alt="TensorFlow" src="https://img.shields.io/badge/TensorFlow-1e1e2e?style=flat-square&logo=tensorflow&logoColor=89b4fa" />
+</p>
 <br/>
 
 Publications

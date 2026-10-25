@@ -7,48 +7,59 @@ redirect_from:
   - /about.html
 ---
 
-👋 I'm currently on my Master's degree in Data Science at CUHK(SZ), after my Bachelor's in Economics at the University of Manchester.
+👋 I am a **PhD student in Artificial Intelligence at CUHK-Shenzhen**, working on multimodal perception and generative models. I am also a Research Fellow at the [CUHK(SZ)–CROSS Joint Laboratory](https://github.com/CUHKSZ-CROSS-Lab), a joint lab of the School of Artificial Intelligence and Shenzhen Kuafu-Yundun Technology. Before that I studied Economics at the University of Manchester.
 
 ## 🛠️ Skills & Tools
-- **Areas of Interest:** Machine Learning, Language Models, Image Processing, Computer Vision, Natural Language Processing, Genrative AI, LLMs Multimodal and Agent
-<p align="center">
-<img align="center" src="https://skillicons.dev/icons?i=linux,ubuntu,windows,anaconda,pycharm,vim,py,r,latex,tensorflow,pytorch,sklearn,matlab,react,vue&theme=light" />
+
+- **Areas of interest:** machine learning, language models, image processing, computer vision, natural language processing, generative AI, multimodal LLMs and agents
+
+<p>
+  <img alt="Python" src="https://img.shields.io/badge/Python-1e1e2e?style=flat-square&logo=python&logoColor=89b4fa" />
+  <img alt="R" src="https://img.shields.io/badge/R-1e1e2e?style=flat-square&logo=r&logoColor=89b4fa" />
+  <img alt="LaTeX" src="https://img.shields.io/badge/LaTeX-1e1e2e?style=flat-square&logo=latex&logoColor=89b4fa" />
+  <img alt="Linux" src="https://img.shields.io/badge/Linux-1e1e2e?style=flat-square&logo=linux&logoColor=89b4fa" />
+  <img alt="Neovim" src="https://img.shields.io/badge/Neovim-1e1e2e?style=flat-square&logo=neovim&logoColor=89b4fa" />
+  <img alt="Git" src="https://img.shields.io/badge/Git-1e1e2e?style=flat-square&logo=git&logoColor=89b4fa" />
 </p>
-<br/>
+<p>
+  <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-1e1e2e?style=flat-square&logo=pytorch&logoColor=89b4fa" />
+  <img alt="TensorFlow" src="https://img.shields.io/badge/TensorFlow-1e1e2e?style=flat-square&logo=tensorflow&logoColor=89b4fa" />
+  <img alt="scikit-learn" src="https://img.shields.io/badge/scikit--learn-1e1e2e?style=flat-square&logo=scikitlearn&logoColor=89b4fa" />
+  <img alt="CUDA" src="https://img.shields.io/badge/CUDA-1e1e2e?style=flat-square&logo=nvidia&logoColor=89b4fa" />
+  <img alt="Vue" src="https://img.shields.io/badge/Vue-1e1e2e?style=flat-square&logo=vuedotjs&logoColor=89b4fa" />
+  <img alt="React" src="https://img.shields.io/badge/React-1e1e2e?style=flat-square&logo=react&logoColor=89b4fa" />
+</p>
 
 ## 🏆 Pinned Repositories
 
-- **[SD3M-SimpleTuner-Iora](https://github.com/CAI991108/SD3M-SimpleTuner-lora)**: Tuning Stable Diffusion 3 Medium for generative art enhancement.
+- **[SD3M-SimpleTuner-lora](https://github.com/CAI991108/SD3M-SimpleTuner-lora)**: LoRA fine-tuning of Stable Diffusion 3 Medium for generative art enhancement.
 
 - **[JD_search_agent](https://github.com/CAI991108/JD_search_agent)**: Stateful AI shopping assistant for JD.com with multimodal product search (text-image OCR).
 
-- **[RoboAction-Frame-Prediction](https://github.com/CAI991108/Robotic-Action-Frame-Prediction-with-InstructPix2Pix)**: Multimodal fine-tuned model predicting future robotic action frames (256+256 resolution).
+- **[RoboAction-Frame-Prediction](https://github.com/CAI991108/Robotic-Action-Frame-Prediction-with-InstructPix2Pix)**: Multimodal fine-tuned model predicting future robotic action frames (256×256 resolution).
 
-- **[Deep-Learning-Utilis](https://github.com/CAI991108/Deep-Learning-Utils)**: Fundamental to advanced deep learning projects with theory-implementation combos.
+- **[Deep-Learning-Utils](https://github.com/CAI991108/Deep-Learning-Utils)**: Fundamental to advanced deep learning projects with theory-implementation combos.
 
-- **[Natural-Language-Processing-Vills](https://github.com/CAI991108/Natural-Language-Processing-Utils)**: Cutting-edge NLP projects from word embeddings to LLM fine-tuning.
+- **[Natural-Language-Processing-Utils](https://github.com/CAI991108/Natural-Language-Processing-Utils)**: Cutting-edge NLP projects from word embeddings to LLM fine-tuning.
 
 ## 📫 Contact
 
-Feel free to explore my repositories and reach out via email or:
+Feel free to reach out by [email](mailto:zijincai@link.cuhk.edu.cn) or find me here:
+
 <p align="center">
-<a href="https://github.com/CAI991108"><img src="https://img.shields.io/badge/GitHub-CAI991108-blue?logo=github" /></a>
-<a href="https://wakatime.com/@0a1a641a-17e3-4bcf-8339-f02a8fb3a069"><img src="https://wakatime.com/badge/user/0a1a641a-17e3-4bcf-8339-f02a8fb3a069.svg" alt="Total time coded since Jul 14 2024" /></a>
-<img src="https://img.shields.io/badge/HuggingFace-jimchoi-yellow?logo=huggingface" />
-<img src="https://img.shields.io/badge/WeChat&Tel-13543750006-green?logo=wechat" />
-<img src="https://komarev.com/ghpvc/?username=CAI991108&abbreviated=true&color=blue" />
+  <a href="https://github.com/CAI991108"><img alt="GitHub: CAI991108" src="https://img.shields.io/badge/GitHub-CAI991108-1e1e2e?style=flat-square&logo=github&logoColor=89b4fa" /></a>
+  <a href="https://huggingface.co/jimchoi"><img alt="Hugging Face: jimchoi" src="https://img.shields.io/badge/Hugging%20Face-jimchoi-1e1e2e?style=flat-square&logo=huggingface&logoColor=89b4fa" /></a>
+  <a href="https://wakatime.com/@CAI991108"><img alt="Total time coded since July 2024" src="https://wakatime.com/badge/user/0a1a641a-17e3-4bcf-8339-f02a8fb3a069.svg" /></a>
+  <img alt="Profile views" src="https://komarev.com/ghpvc/?username=CAI991108&abbreviated=true&color=0969DA" />
 </p>
 
-<!-- 证书展示部分 -->
 ## 📜 Some Certifications
 
 <p align="center">
-  <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
-    <div style="border: 2px solid #ccc; padding: 10px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-      <img src="https://cdn-uploads.huggingface.co/production/uploads/noauth/D-EnLdLp8tj2BoJcATkKh.webp" width="350" />
-      <img src="/images/Completed 5-Day Gen AI Intensive.png" width="380" />
-      <img src="/images/nv-cert1.png" width="310" />
-      <img src="/images/nv-cert2.png" width="310" />
-    </div>
-  </div>
+  <img width="470" alt="Google 5-Day Gen AI Intensive course certificate" src="/images/cert-genai-5day.webp" />
+  <br/>
+  <img width="400" alt="NVIDIA certificate: Introduction to Transformer-Based Natural Language Processing" src="/images/cert-nvidia-transformer-nlp.webp" />
+  <img width="400" alt="NVIDIA certificate: Accelerating Python applications with CUDA" src="/images/cert-nvidia-cuda-python.webp" />
+  <br/>
+  <img width="400" alt="Hugging Face course certificate" src="/images/cert-hf.webp" />
 </p>

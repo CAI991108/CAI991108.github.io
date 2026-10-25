@@ -11,7 +11,7 @@ locale                   : "Shenzhen - China"
 title                    : "Zijin CAI / 蔡子晋"
 title_separator          : "-"
 name                     : &name "Zijin CAI"
-description              : &description "BSc Econ, UoM --> MSc DS, CUHK(SZ)"
+description              : &description "PhD in AI, CUHK-Shenzhen - BSc Econ, UoM"
 url                      : https://CAI991108.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "https://github.com/CAI991108?tab=repositories"
@@ -25,10 +25,10 @@ author:
   name             : "Zijin CAI"
   pronouns         : "he/him"  
   bio              : "In articulo mortis, Caelitus mihi vires"
-  location         : "Shenzen - China"
+  location         : "Shenzhen - China"
   employer         : "CUHK(SZ)"
   uri              : # "https://github.com/CAI991108"
-  email            : "224040002@link.cuhk.edu.cn" 
+  email            : "zijincai@link.cuhk.edu.cn" 
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
@@ -73,7 +73,7 @@ author:
   xing             : # Username
   youtube          : # Username
   zhihu            : # Username
-  wechat           : "13543750006"
+  wechat           : # "13543750006"
 
 # Publication Category - The following the list of publication categories and their headings
 publication_category:
