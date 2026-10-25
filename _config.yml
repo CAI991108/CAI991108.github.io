@@ -24,8 +24,8 @@ author:
   avatar           : "profile.webp"
   name             : "Zijin CAI"
   pronouns         : "he/him"  
-  bio              : "PhD student in AI · multimodal perception and generative models"
-  bio_zh           : "人工智能博士研究生 · 多模态感知与生成式模型"
+  bio              : "PhD student in AI · perception, generation and research infrastructure"
+  bio_zh           : "人工智能博士研究生 · 感知、生成与研究基础设施"
   location         : "Shenzhen - China"
   location_zh      : "中国 · 深圳"
   employer         : "CUHK(SZ)"
@@ -124,7 +124,7 @@ staticman:
       options:
         format           : "iso8601" # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
 atom_feed:
-  hide                   : false     # change to true to hide the RSS feed in the footer
+  hide                   : true      # no posts yet; turn back on with the first note
   path                   : # blank (default) uses feed.xml
 
 
