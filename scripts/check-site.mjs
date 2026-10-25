@@ -27,12 +27,16 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 const BASE = (process.env.SITE_URL || "https://cai991108.github.io").replace(/\/$/, "");
-const PAGES = ["/", "/cv/", "/publications/", "/talks/", "/teaching/", "/portfolio/", "/year-archive/"];
+const PAGES = ["/", "/cv/", "/research/", "/projects/"];
 const MOBILE_WIDTH = 390;
 
 // Scoped to the CV on purpose: "quantization" is a real term elsewhere on the
 // site, but in the fund-management bullets it should read "quantitative".
 const CV_TYPOS = /Economictrics|Advance Mathematics|the STATA|portofolio|quantization/i;
+
+// Copy the template left behind. Any of it on a live page means a page is a
+// stub, and the nav should not be pointing at it.
+const PLACEHOLDER = /I have nothing published yet|Nothing's here yet|Maybe some place in future|Name Name|Your Name/i;
 
 const CHROME_CANDIDATES = [
   process.env.CHROME_PATH,
@@ -77,6 +81,9 @@ async function checkPage(path) {
     if (r.status >= 400) broken.push(`${r.status} ${sub}`);
   }
   record(`${path} sub-resources`, broken.length === 0, broken.slice(0, 8).join(", "));
+
+  const stub = html.match(PLACEHOLDER);
+  record(`${path} not a stub`, !stub, stub ? `found "${stub[0]}"` : "");
 
   return { html, status: res.status };
 }
@@ -228,13 +235,26 @@ for (const path of PAGES) {
         /komarev\.com/.test(html) ? "komarev still embedded" : "none",
       );
     }
+
+    if (path === "/research/") {
+      record(
+        "research names both lab systems",
+        /CrossLedger/.test(html) && /CrossBooks/.test(html),
+        /CrossLedger/.test(html) && /CrossBooks/.test(html) ? "" : "CrossLedger / CrossBooks missing",
+      );
+    }
+
+    if (path === "/projects/") {
+      const cards = (html.match(/class="project-card"/g) || []).length;
+      record("projects renders cards", cards >= 7, `${cards} cards`);
+    }
   } catch (err) {
     record(`GET ${path}`, false, err.message);
   }
 }
 
 if (chrome) {
-  for (const path of ["/", "/cv/"]) {
+  for (const path of PAGES) {
     try {
       const m = await measureOverflow(chrome, path);
       const ok = m.scrollWidth <= m.clientWidth + 1;

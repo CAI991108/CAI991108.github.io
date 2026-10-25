@@ -1,0 +1,51 @@
+# Projects rendered on /projects/ — order is the display order.
+# Keep blurbs to one sentence: the card is a signpost, the repo is the detail.
+
+- name: omarchy-NTE
+  url: https://github.com/CAI991108/omarchy-NTE
+  blurb: >-
+    A Catppuccin Mocha bundle for Omarchy — a theme-following fcitx5 hook, local
+    DSH plugins, and a DSH-to-WakaTime bridge.
+  stack: [JavaScript, Hyprland, Waybar]
+
+- name: Robotic-Action-Frame-Prediction-with-InstructPix2Pix
+  url: https://github.com/CAI991108/Robotic-Action-Frame-Prediction-with-InstructPix2Pix
+  blurb: >-
+    An InstructPix2Pix fine-tune that predicts a robot's future action frames at
+    256x256.
+  stack: [Python, PyTorch, Diffusion]
+
+- name: JD_search_agent
+  url: https://github.com/CAI991108/JD_search_agent
+  blurb: >-
+    A LangGraph state machine shopping assistant for JD.com, with multimodal
+    product search over text and OCR.
+  stack: [Python, LangGraph, Playwright]
+
+- name: SD3M-SimpleTuner-lora
+  url: https://github.com/CAI991108/SD3M-SimpleTuner-lora
+  blurb: >-
+    LoRA fine-tune of Stable Diffusion 3 Medium with SimpleTuner; the weights
+    live on Hugging Face.
+  stack: [Python, LoRA, SimpleTuner]
+
+- name: dsh-studios
+  url: https://github.com/CAI991108/dsh-studios
+  blurb: >-
+    A film-production pipeline shipped as a DSH skill: one source of truth, a
+    derived timeline, a Remotion render, and an automated QA gate.
+  stack: [TypeScript, Remotion, Automation]
+
+- name: CUHKSZ-SAI-LaTeX_Template
+  url: https://github.com/CAI991108/CUHKSZ-SAI-LaTeX_Template
+  blurb: >-
+    A LaTeX template for theses and reports at CUHK-Shenzhen's School of
+    Artificial Intelligence.
+  stack: [TeX, LaTeX]
+
+- name: AIRI-Dev
+  url: https://github.com/CAI991108/AIRI-Dev
+  blurb: >-
+    LLM multimodal interaction for education, built on AIRI with Vue 3,
+    TypeScript and Three.js.
+  stack: [Vue 3, TypeScript, Three.js]
