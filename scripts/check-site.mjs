@@ -52,6 +52,54 @@ function record(name, ok, detail = "") {
   results.push({ name, ok, detail });
 }
 
+/** WCAG relative luminance for a #rgb / #rrggbb string. */
+function luminance(hex) {
+  const h = hex.replace("#", "");
+  const full = h.length === 3 ? h.split("").map((c) => c + c).join("") : h;
+  const [r, g, b] = [0, 2, 4].map((i) => parseInt(full.slice(i, i + 2), 16) / 255);
+  const lin = (c) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4);
+  return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+}
+
+function contrastRatio(a, b) {
+  const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x);
+  return (hi + 0.05) / (lo + 0.05);
+}
+
+/** True when some rule inside the print block hides `selector`. The compiled
+ *  CSS groups hidden selectors, so the selector list has to be inspected. */
+function hidesInPrint(printBlock, selector) {
+  for (const m of printBlock.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+    if (m[1].includes(selector) && /display\s*:\s*none/.test(m[2])) return true;
+  }
+  return false;
+}
+function mediaBlock(css, query) {
+  const start = css.indexOf(`@media ${query}{`);
+  if (start === -1) return "";
+  let depth = 0;
+  for (let i = css.indexOf("{", start); i < css.length; i++) {
+    if (css[i] === "{") depth++;
+    else if (css[i] === "}" && --depth === 0) return css.slice(start, i + 1);
+  }
+  return "";
+}
+
+/** Every balanced @media block for `query`: the theme ships one print block and
+ *  the site's overrides add a second, so the first match is not enough. */
+function mediaBlocks(css, query) {
+  const blocks = [];
+  let from = 0;
+  for (;;) {
+    const block = mediaBlock(css.slice(from), query);
+    if (!block) return blocks;
+    const start = css.indexOf(block, from);
+    const end = start + block.length;
+    blocks.push(block);
+    from = end;
+  }
+}
+
 /** Same-origin URLs referenced by a page, as absolute paths. */
 function subResources(html) {
   const urls = new Set();
@@ -153,7 +201,7 @@ async function waitForTarget(port, timeoutMs = 20000) {
   throw new Error("chrome devtools endpoint never came up");
 }
 
-async function measureOverflow(chromePath, path) {
+async function measure(chromePath, path, { width, height = 900, dsf = 1, mobile = false } = {}) {
   const userDataDir = mkdtempSync(join(tmpdir(), "site-check-"));
   const port = 9400 + Math.floor(Math.random() * 300);
   const proc = spawn(
@@ -182,12 +230,7 @@ async function measureOverflow(chromePath, path) {
 
     await cdp.send("Page.enable");
     await cdp.send("Runtime.enable");
-    await cdp.send("Emulation.setDeviceMetricsOverride", {
-      width: MOBILE_WIDTH,
-      height: 844,
-      deviceScaleFactor: 2,
-      mobile: true,
-    });
+    await cdp.send("Emulation.setDeviceMetricsOverride", { width, height, deviceScaleFactor: dsf, mobile });
 
     const loaded = cdp.once("Page.loadEventFired");
     await cdp.send("Page.navigate", { url: BASE + path });
@@ -203,7 +246,19 @@ async function measureOverflow(chromePath, path) {
           .filter(({ r }) => r.width > 0 && r.right > vw + 1)
           .slice(0, 5)
           .map(({ el, r }) => el.tagName.toLowerCase() + (el.className ? '.' + String(el.className).trim().split(/\\s+/).join('.') : '') + ' right=' + Math.round(r.right));
-        return { scrollWidth: doc.scrollWidth, clientWidth: doc.clientWidth, viewport: vw, offenders: wide };
+        const content = document.querySelector('.page__content') || document.querySelector('.archive');
+        let charsPerLine = null;
+        if (content) {
+          const para = [...content.querySelectorAll('p')].find(p => (p.textContent || '').trim().length > 120);
+          if (para) {
+            const range = document.createRange();
+            range.selectNodeContents(para);
+            const lines = [...range.getClientRects()].filter(r => r.width > 50).length;
+            if (lines > 0) charsPerLine = Math.round(para.textContent.trim().length / lines);
+          }
+        }
+        const contentBottom = content ? Math.round(content.getBoundingClientRect().bottom + window.scrollY) : null;
+        return { scrollWidth: doc.scrollWidth, clientWidth: doc.clientWidth, viewport: vw, offenders: wide, charsPerLine, contentBottom };
       })()`,
     });
 
@@ -324,7 +379,7 @@ for (const path of [
 if (chrome) {
   for (const path of PAGES) {
     try {
-      const m = await measureOverflow(chrome, path);
+      const m = await measure(chrome, path, { width: MOBILE_WIDTH, height: 844, dsf: 2, mobile: true });
       const ok = m.scrollWidth <= m.clientWidth + 1;
       record(
         `${path} fits ${MOBILE_WIDTH}px`,
@@ -337,6 +392,21 @@ if (chrome) {
       record(`${path} fits ${MOBILE_WIDTH}px`, false, err.message);
     }
   }
+
+  // The reading measure and the homepage length are the two numbers this
+  // redesign was argued from, so they are measured on the real page at the
+  // width the argument was made at.
+  try {
+    const d = await measure(chrome, "/", { width: 1440, height: 900 });
+    record(
+      "home measure is 60-72 characters",
+      d.charsPerLine >= 60 && d.charsPerLine <= 72,
+      `${d.charsPerLine} chars/line`,
+    );
+    record("home content ends within 1500px", d.contentBottom <= 1500, `${d.contentBottom}px`);
+  } catch (err) {
+    record("home measure is 60-72 characters", false, err.message);
+  }
 } else {
   record(`overview check`, true, "skipped: no chrome found (set CHROME_PATH)");
 }
@@ -348,8 +418,33 @@ try {
   record("css carries the link colour", hasLink, hasLink ? "#4f6d99" : "#4f6d99 missing from main.css");
   const hasCjk = /Noto Sans SC/.test(css);
   record("css carries the CJK stack", hasCjk, hasCjk ? "Noto Sans SC" : "Noto Sans SC missing from main.css");
+  const hasFace = /Source Serif 4/.test(css);
+  record("css references the text face", hasFace, hasFace ? "Source Serif 4" : "Source Serif 4 missing");
+
+  // Paper is a CV, not a portfolio: the certificates are on screen only.
+  const prints = mediaBlocks(css, "print");
+  const hidesCerts = prints.some((block) => hidesInPrint(block, ".cert-grid"));
+  record(
+    "print hides the certificates",
+    hidesCerts,
+    prints.length === 0 ? "no @media print block" : hidesCerts ? "" : ".cert-grid is not hidden in any print block",
+  );
+
+  // The link colour is the one place the palette meets a readability floor.
+  const link = (css.match(/(?:^|[},])a\{color:(#[0-9a-f]{3,6})\}/i) || [])[1];
+  const ratio = link ? contrastRatio(link, "#ffffff") : 0;
+  record("link colour passes AA", ratio >= 4.5, link ? `${link} on white = ${ratio.toFixed(2)}:1` : "link colour not found");
 } catch (err) {
   record("css carries the link colour", false, err.message);
+}
+
+// The text face is served by the site, not by a font CDN.
+try {
+  const res = await fetch(BASE + "/assets/fonts/source-serif-4-400.woff2");
+  const type = res.headers.get("content-type") || "";
+  record("serif is self-hosted", res.status === 200 && /font\/woff2/.test(type), `${res.status} ${type}`);
+} catch (err) {
+  record("serif is self-hosted", false, err.message);
 }
 
 // The Person entity has to be parseable JSON with a real sameAs list.
