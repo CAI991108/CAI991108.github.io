@@ -1,9 +1,13 @@
 {% comment %}
-  Project cards, shared by the homepage (first four) and /projects/ (all of them).
-  Data: _data/projects.yml. Usage:
-    {% include project-cards.html limit=4 %}
+  Project cards, shared by the homepage (first four) and /projects/ (all).
+
+  Data: _data/projects.yml. Callers pass a limit, e.g. limit=4 in the include
+  tag. include.limit arrives as a string and Liquid's for-limit wants a number,
+  so it is coerced here; uncoerced, the limit is silently dropped and every
+  project renders.
 {% endcomment %}
-{% for p in site.data.projects limit=include.limit %}
+{% assign card_limit = include.limit | default: 99 | plus: 0 %}
+{% for p in site.data.projects limit: card_limit %}
   <article class="project-card">
     <h3 class="project-card__title"><a href="{{ p.url }}">{{ p.name }}</a></h3>
     <p class="project-card__blurb">{{ p.blurb }}</p>
