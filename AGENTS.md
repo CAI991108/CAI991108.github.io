@@ -4,6 +4,8 @@ This repository is the source of `https://cai991108.github.io` — a Jekyll site
 
 Changing the site — page map, the three non-obvious gotchas, and how to verify a change: `README.md`.
 
+More than one session in this repo at a time: give each its own `git worktree`, and stage explicit paths — a concurrent commit can swallow a `git add -A` and the push then reports "Everything up-to-date" with the work still uncommitted.
+
 ## Agent skills
 
 ### Issue tracker

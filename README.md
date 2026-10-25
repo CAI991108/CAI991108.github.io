@@ -46,6 +46,27 @@ node scripts/shoot.mjs https://cai991108.github.io/ out.png --width 390
 
 Widths of 500px or less switch on mobile emulation. Use this rather than Chrome's plain `--screenshot`: that flag sets a window size with no device emulation, so a "390px" capture is a desktop layout cropped to 390 — which is exactly how a healthy page once got mistaken for a broken one here.
 
+## Previewing before you deploy
+
+```bash
+npm run preview -- / out.html                      # live shell + your local CSS
+npm run preview -- / out.html --content body.html  # ...and your undelivered markup
+```
+
+It fetches the live page for the chrome, compiles the stylesheet from this checkout, and writes a file you can `shoot`. Worth the two commands whenever a change alters the layout: it catches a broken measure or a runaway page height without a deploy cycle.
+
+## The CV PDF
+
+The PDF is printed from a rendered page, and the page has to be deployed first — but the preflight refuses to let you keep deploying with a stale PDF. So it is two steps, in this order:
+
+```bash
+# 1. commit and push the cv.md change; Pages builds it
+# 2. print from the deployed page, then commit the PDF
+npm run cv:pdf
+```
+
+`cv:pdf` compiles the stylesheet locally first, so print rules that are not deployed yet still apply. The preflight allows exactly one commit of lag for this reason, and fails at two.
+
 ## Assets
 
 ```bash
@@ -53,13 +74,6 @@ python scripts/make-assets.py    # favicons, share card, square avatar
 ```
 
 The full-resolution avatar source is deliberately not committed (`images/profile.src.jpg`, gitignored); put it back before regenerating `images/profile.webp`.
-
-The CV PDF is printed from the live page, so it cannot disagree with it:
-
-```bash
-chrome --headless=new --no-pdf-header-footer \
-  --print-to-pdf=files/cv.pdf https://cai991108.github.io/cv/
-```
 
 ## Licence
 

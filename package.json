@@ -39,6 +39,8 @@
     "build:js": "npm run uglify",
     "check": "node scripts/check-site.mjs",
     "preflight": "node scripts/preflight.mjs",
-    "shoot": "node scripts/shoot.mjs"
+    "shoot": "node scripts/shoot.mjs",
+    "preview": "node scripts/preview.mjs",
+    "cv:pdf": "node scripts/make-cv-pdf.mjs"
   }
 }

@@ -177,11 +177,17 @@ function sassGate() {
 
 // ------------------------------------------------------------------ cv pdf --
 
-function gitCommitTime(path) {
-  const run = spawnSync(`git log -1 --format=%ct -- "${path}"`, { cwd: ROOT, shell: true, encoding: "utf8" });
-  if (run.status !== 0) return null;
-  const n = Number.parseInt((run.stdout || "").trim(), 10);
-  return Number.isFinite(n) ? n : null;
+function gitCommits(path) {
+  const run = spawnSync(`git log --format=%H:%ct -- "${path}"`, { cwd: ROOT, shell: true, encoding: "utf8" });
+  if (run.status !== 0) return [];
+  return (run.stdout || "")
+    .trim()
+    .split(/\r?\n/)
+    .filter(Boolean)
+    .map((line) => {
+      const [hash, time] = line.split(":");
+      return { hash, time: Number.parseInt(time, 10) };
+    });
 }
 
 function cvPdfGate() {
@@ -195,24 +201,27 @@ function cvPdfGate() {
     return;
   }
 
-  const pageTime = gitCommitTime(page);
-  if (pageTime === null) {
+  const commits = gitCommits(page);
+  if (commits.length === 0) {
     skip("CV PDF is current", "cv.md has no committed history");
     return;
   }
 
   // Whichever is later: the commit that introduced the PDF, or the working
-  // copy's mtime. A reprint that has not been committed yet still counts as
-  // current, which is what you want mid-session.
-  const pdfTime = Math.max(gitCommitTime(pdf) ?? 0, Math.floor(pdfStat.mtimeMs / 1000));
-  const behind = pdfTime < pageTime;
+  // copy's mtime. A reprint that has not been committed yet counts as current.
+  const pdfTime = Math.max(gitCommits(pdf)[0]?.time ?? 0, Math.floor(pdfStat.mtimeMs / 1000));
+  const behind = commits.filter((c) => c.time > pdfTime).length;
 
+  // One commit of lag is the documented two-step: deploy the page, then print
+  // the PDF from the deployed page and commit it. Two is a forgotten reprint.
   record(
     "CV PDF is current",
-    !behind,
-    behind
-      ? `cv.md changed after the PDF — reprint it: chrome --headless=new --no-pdf-header-footer --print-to-pdf=${pdf} https://cai991108.github.io/cv/`
-      : new Date(pdfTime * 1000).toISOString().slice(0, 16).replace("T", " "),
+    behind <= 1,
+    behind === 0
+      ? new Date(pdfTime * 1000).toISOString().slice(0, 16).replace("T", " ")
+      : behind === 1
+        ? "one commit behind — push this, then run `npm run cv:pdf` and commit the PDF"
+        : `${behind} commits touch cv.md since the PDF — run \`npm run cv:pdf\``,
   );
 }
 
