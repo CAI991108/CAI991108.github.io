@@ -533,3 +533,10 @@ img.author__avatar {
 .masthead__menu-item--lang a {
   color: $gray;
 }
+
+/* The sidebar's Follow button shares a row with the author's name. A Chinese
+ * name is three full-width characters where a Latin one is narrower, and at
+ * 390px that was enough to wrap the label onto two lines. */
+.author__urls-wrapper > button {
+  white-space: nowrap;
+}
