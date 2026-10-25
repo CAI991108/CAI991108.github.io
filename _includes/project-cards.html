@@ -1,0 +1,12 @@
+{% comment %}
+  Project cards, shared by the homepage (first four) and /projects/ (all of them).
+  Data: _data/projects.yml. Usage:
+    {% include project-cards.html limit=4 %}
+{% endcomment %}
+{% for p in site.data.projects limit=include.limit %}
+  <article class="project-card">
+    <h3 class="project-card__title"><a href="{{ p.url }}">{{ p.name }}</a></h3>
+    <p class="project-card__blurb">{{ p.blurb }}</p>
+    <p class="project-card__meta">{% for s in p.stack %}<span class="chip">{{ s }}</span>{% endfor %}</p>
+  </article>
+{% endfor %}

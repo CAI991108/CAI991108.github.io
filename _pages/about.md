@@ -1,56 +1,44 @@
 ---
 permalink: /
-title: "Hi there, this is Zijin CAI!"
 author_profile: true
-redirect_from: 
+redirect_from:
   - /about/
   - /about.html
 ---
 
-👋 I am a **PhD student in Artificial Intelligence at CUHK-Shenzhen**, working on multimodal perception and generative models. I am also a Research Fellow at the [CUHK(SZ)–CROSS Joint Laboratory](https://github.com/CUHKSZ-CROSS-Lab), a joint lab of the School of Artificial Intelligence and Shenzhen Kuafu-Yundun Technology. Before that I studied Data Science at CUHK-Shenzhen and Economics at the University of Manchester.
+<h1 class="page__title">Zijin CAI 蔡子晋</h1>
 
-## 🛠️ Skills & Tools
+<p class="hero__identity"><strong>PhD in Artificial Intelligence</strong> @ CUHK-Shenzhen · Research Fellow @ <a href="https://github.com/CUHKSZ-CROSS-Lab">CROSS Joint Lab</a></p>
 
-- **Areas of interest:** machine learning, language models, image processing, computer vision, natural language processing, generative AI, multimodal LLMs and agents
+<p class="hero__lede">I work on multimodal perception and generative models: teaching models to see what happens over time, and making diffusion fine-tuning cheap enough to iterate on. Most of what I build turns into research infrastructure — pipelines, agent tooling and evaluation harnesses that make the research repeatable. Before this, an MSc in Data Science at CUHK-Shenzhen and a BSc in Economics at Manchester.</p>
 
-<p class="skill-chips">
-  <span class="chip">Python</span>
-  <span class="chip">R</span>
-  <span class="chip">LaTeX</span>
-  <span class="chip">Linux</span>
-  <span class="chip">Neovim</span>
-  <span class="chip">Git</span>
-  <span class="chip">PyTorch</span>
-  <span class="chip">TensorFlow</span>
-  <span class="chip">scikit-learn</span>
-  <span class="chip">CUDA</span>
-  <span class="chip">Vue</span>
-  <span class="chip">React</span>
-</p>
+<p class="hero__now"><strong>Now</strong> — shipping <strong>omarchy · dsh</strong>, building <strong>AI research infrastructure</strong>, and multimodal agents that have to hold state.</p>
 
-## 🏆 Pinned Repositories
+## Selected work
 
-- **[SD3M-SimpleTuner-lora](https://github.com/CAI991108/SD3M-SimpleTuner-lora)**: LoRA fine-tuning of Stable Diffusion 3 Medium for generative art enhancement.
+<div class="project-grid">
+{% include project-cards.html limit=4 %}
+</div>
 
-- **[JD_search_agent](https://github.com/CAI991108/JD_search_agent)**: Stateful AI shopping assistant for JD.com with multimodal product search (text-image OCR).
+<p class="section-more"><a href="{{ '/projects/' | relative_url }}">All seven projects →</a></p>
 
-- **[RoboAction-Frame-Prediction](https://github.com/CAI991108/Robotic-Action-Frame-Prediction-with-InstructPix2Pix)**: Multimodal fine-tuned model predicting future robotic action frames (256×256 resolution).
+## Lab research
 
-- **[Deep-Learning-Utils](https://github.com/CAI991108/Deep-Learning-Utils)**: Fundamental to advanced deep learning projects with theory-implementation combos.
+<p class="lab-note">Two systems for the CUHK(SZ)–CROSS Joint Laboratory — a joint lab of the School of Artificial Intelligence and Shenzhen Kuafu-Yundun Technology. Architecture and stack are public; the source stays closed.</p>
 
-- **[Natural-Language-Processing-Utils](https://github.com/CAI991108/Natural-Language-Processing-Utils)**: Cutting-edge NLP projects from word embeddings to LLM fine-tuning.
+{% include lab-systems.html %}
 
-## 📫 Contact
+<p class="section-more"><a href="{{ '/research/' | relative_url }}">More on research →</a></p>
 
-Feel free to reach out by [email](mailto:zijincai@link.cuhk.edu.cn), or find me on:
+## Skills
 
-<p class="contact-links">
-  <a href="https://github.com/CAI991108">GitHub</a> ·
-  <a href="https://huggingface.co/jimchoi">Hugging Face</a> ·
-  <a href="https://wakatime.com/@CAI991108">WakaTime</a>
-</p>
+<p class="skill-row"><strong>Research</strong> — multimodal perception, generative models, LLM agents, evaluation</p>
 
-## 📜 Some Certifications
+<p class="skill-row"><strong>Engineering</strong> — Python, PyTorch, CUDA, TypeScript, Vue, React</p>
+
+<p class="skill-row"><strong>Infrastructure</strong> — Linux, Docker, Postgres, Git, Neovim, LaTeX</p>
+
+## Awards
 
 <div class="cert-grid">
   <figure>
@@ -70,3 +58,7 @@ Feel free to reach out by [email](mailto:zijincai@link.cuhk.edu.cn), or find me 
     <figcaption>NVIDIA · CUDA for Python</figcaption>
   </figure>
 </div>
+
+## Contact
+
+<p class="contact-links"><a href="mailto:zijincai@link.cuhk.edu.cn">zijincai@link.cuhk.edu.cn</a> · <a href="https://github.com/CAI991108">GitHub</a> · <a href="https://huggingface.co/jimchoi">Hugging Face</a> · <a href="https://wakatime.com/@CAI991108">WakaTime</a></p>

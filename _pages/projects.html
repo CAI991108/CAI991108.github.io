@@ -7,12 +7,4 @@ author_profile: true
 
 <p>Things I build and keep maintaining. The two systems I work on for the CROSS Joint Lab are on the <a href="{{ '/research/' | relative_url }}">research page</a> — their source stays closed.</p>
 
-<div class="project-grid">
-{% for p in site.data.projects %}
-  <article class="project-card">
-    <h3 class="project-card__title"><a href="{{ p.url }}">{{ p.name }}</a></h3>
-    <p class="project-card__blurb">{{ p.blurb }}</p>
-    <p class="project-card__meta">{% for s in p.stack %}<span class="chip">{{ s }}</span>{% endfor %}</p>
-  </article>
-{% endfor %}
-</div>
+<div class="project-grid">{% include project-cards.html limit=99 %}</div>

@@ -19,10 +19,7 @@ I am a PhD student in Artificial Intelligence at CUHK-Shenzhen, supervised by [P
 
 Architecture and stack are shown; the source stays closed.
 
-| System | What it does | Stack |
-| :-- | :-- | :-- |
-| **CrossLedger** | Three-surface ledger automation — API, workbench and desktop executor — with SSO, object storage, persisted task state and scripted acceptance | `NestJS` `Vue` `Postgres` `Keycloak` `MinIO` |
-| **CrossBooks** | Document intake and verification: per-company authorisation, versioned originals, conflict-safe drafts | `Vue` `Postgres` `Docker` |
+{% include lab-systems.html %}
 
 ## Elsewhere
 

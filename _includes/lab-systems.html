@@ -1,0 +1,26 @@
+{% comment %}
+  The two CROSS Joint Lab systems. Shared by the homepage and /research/ so the
+  description cannot drift between them. Source stays closed; only the shape of
+  the systems is public.
+{% endcomment %}
+<table class="lab-table">
+  <thead>
+    <tr>
+      <th>System</th>
+      <th>What it does</th>
+      <th>Stack</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>CrossLedger</strong></td>
+      <td>Three-surface ledger automation — an API, a workbench and a desktop executor — with SSO, object storage and persisted task state.</td>
+      <td><span class="chip">NestJS</span><span class="chip">Vue</span><span class="chip">Postgres</span><span class="chip">Keycloak</span><span class="chip">MinIO</span></td>
+    </tr>
+    <tr>
+      <td><strong>CrossBooks</strong></td>
+      <td>Document intake and verification: per-company authorisation, versioned originals, conflict-safe drafts.</td>
+      <td><span class="chip">Vue</span><span class="chip">Postgres</span><span class="chip">Docker</span></td>
+    </tr>
+  </tbody>
+</table>

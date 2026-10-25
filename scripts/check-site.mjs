@@ -244,6 +244,16 @@ for (const path of PAGES) {
         thirdPartyImages.length === 0,
         thirdPartyImages.slice(0, 4).join(", "),
       );
+      const h1 = (html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/) || [])[1] || "";
+      record("home h1 is the name", /Zijin CAI/.test(h1) && /蔡子晋/.test(h1), h1.replace(/<[^>]+>/g, "").trim());
+      record("home drops the greeting", !/Hi there, this is/i.test(html), /Hi there, this is/i.test(html) ? "greeting still there" : "");
+      const homeCards = (html.match(/class="project-card"/g) || []).length;
+      record("home shows four projects", homeCards === 4, `${homeCards} cards`);
+    }
+
+    if (path === "/cv/") {
+      const rows = (html.match(/class="cv-row"/g) || []).length;
+      record("cv entries are laid out as rows", rows >= 8, `${rows} rows`);
     }
 
     if (path === "/research/") {
@@ -311,6 +321,16 @@ try {
   record("css carries the CJK stack", hasCjk, hasCjk ? "Noto Sans SC" : "Noto Sans SC missing from main.css");
 } catch (err) {
   record("css carries the brand colour", false, err.message);
+}
+
+// The CV PDF is printed from /cv/ and linked from the sidebar, so it has to be
+// reachable at the path the sidebar points at.
+try {
+  const r = await fetch(BASE + "/files/cv.pdf");
+  const type = r.headers.get("content-type") || "";
+  record("cv pdf is published", r.status === 200 && /pdf/i.test(type), `${r.status} ${type}`);
+} catch (err) {
+  record("cv pdf is published", false, err.message);
 }
 
 // Homepage weight of same-origin <link>/<img> resources, decoded bytes.

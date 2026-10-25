@@ -29,6 +29,7 @@ author:
   employer         : "CUHK(SZ)"
   uri              : # "https://github.com/CAI991108"
   email            : "zijincai@link.cuhk.edu.cn" 
+  cv               : "/files/cv.pdf" # shown as "Download CV" in the sidebar
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
