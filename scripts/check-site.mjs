@@ -234,6 +234,12 @@ for (const path of PAGES) {
         !/komarev\.com/.test(html),
         /komarev\.com/.test(html) ? "komarev still embedded" : "none",
       );
+      const thirdPartyImages = [...html.matchAll(/<img[^>]+src="(https?:\/\/[^"]+)"/gi)].map((m) => m[1]);
+      record(
+        "home loads no third-party images",
+        thirdPartyImages.length === 0,
+        thirdPartyImages.slice(0, 4).join(", "),
+      );
     }
 
     if (path === "/research/") {
@@ -290,6 +296,17 @@ if (chrome) {
   }
 } else {
   record(`overview check`, true, "skipped: no chrome found (set CHROME_PATH)");
+}
+
+// The palette and font stack have to survive the Sass build and reach the CSS.
+try {
+  const css = await (await fetch(BASE + "/assets/css/main.css")).text();
+  const hasBlue = /#5d7aa9/i.test(css);
+  record("css carries the brand colour", hasBlue, hasBlue ? "#5d7aa9" : "#5d7aa9 missing from main.css");
+  const hasCjk = /Noto Sans SC/.test(css);
+  record("css carries the CJK stack", hasCjk, hasCjk ? "Noto Sans SC" : "Noto Sans SC missing from main.css");
+} catch (err) {
+  record("css carries the brand colour", false, err.message);
 }
 
 // Homepage weight of same-origin <link>/<img> resources, decoded bytes.

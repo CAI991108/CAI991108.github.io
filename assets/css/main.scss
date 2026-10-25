@@ -12,6 +12,7 @@
 
 @import "vendor/breakpoint/breakpoint"; // media query mixins
 @import "variables";
+@import "palette"; // brand colours and font stacks, before anything uses them
 @import "mixins";
 @import "vendor/susy/susy";
 

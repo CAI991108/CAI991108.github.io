@@ -1,0 +1,43 @@
+/* ---------------------------------------------------------------------------
+ * Palette and type — overrides of the theme's variables.
+ *
+ * Imported right after _variables.scss, so every partial that reads these
+ * variables picks the new values up without any theme file being edited.
+ *
+ * The colours are the ones the GitHub profile is built from, so the site and
+ * the profile read as the same person: slate blue for links and rules, mauve
+ * for the second accent, a cool neutral for gray, warm brown for the rare
+ * mark that needs to stand apart.
+ * ------------------------------------------------------------------------ */
+
+$palette-blue: #5d7aa9;
+$palette-mauve: #876fa5;
+$palette-neutral: #6f7787;
+$palette-warm: #9b6f54;
+
+/* Every other gray in the theme is mixed from $gray, so this one moves them
+ * all a shade cooler instead of leaving warm template gray next to the blue. */
+$gray: $palette-neutral;
+
+$text-color: #4a4f57;
+$primary-color: $palette-blue;
+
+$link-color: $palette-blue;
+$link-color-hover: $palette-mauve;
+/* The theme lightens visited links by 25%, which drops the contrast under 3:1.
+ * Same as unvisited is intentional: on a site this small, "already read" is
+ * not information worth trading legibility for. */
+$link-color-visited: $palette-blue;
+
+$masthead-link-color: $palette-blue;
+$masthead-link-color-hover: mix(#000, $palette-mauve, 10%);
+
+/* One sans stack for the whole site, with the CJK families in it. Without
+ * them the Chinese name falls back to whatever the OS picks, which is how the
+ * masthead and the sidebar ended up at different weights for the same name. */
+$sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC",
+  "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial,
+  sans-serif;
+$global-font-family: $sans-serif;
+$header-font-family: $sans-serif;
+$sans-serif-narrow: $sans-serif;

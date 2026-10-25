@@ -2,12 +2,61 @@
  * Site overrides
  *
  * Everything site-specific goes here so the academicpages partials stay
- * untouched and can still be merged from upstream.
+ * untouched and can still be merged from upstream. Colours and font stacks
+ * live in _palette.scss, which is imported earlier so the theme picks them up.
  * ------------------------------------------------------------------------ */
 
-/* Certificate grid: two per row, one per row on narrow screens.
- * Replaces fixed-width <img width="470"> markup that forced the whole page to
- * ~500px wide and made every page scroll sideways on a 390px phone. */
+/* ---------------------------------------------------------------- typography */
+
+/* Slightly more leading than the theme's 1.5: the body copy is set in a light
+ * sans on white, and 1.5 reads cramped at this measure. */
+body {
+  line-height: 1.6;
+}
+
+.page__content p,
+.page__content li {
+  line-height: 1.6;
+}
+
+/* Titles are large here; a touch of negative tracking stops them looking
+ * letterspaced at display sizes. */
+.page__title {
+  letter-spacing: -0.012em;
+}
+
+.page__content h2 {
+  letter-spacing: -0.006em;
+}
+
+/* ------------------------------------------------------------------- surface */
+
+/* The masthead already has a 1px hairline from the theme; tinting it toward the
+ * brand colour keeps it from reading as a stray gray rule. */
+.masthead {
+  border-bottom-color: rgba($palette-blue, 0.28);
+}
+
+/* A hairline ring instead of the avatar floating on white. */
+img.author__avatar {
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba($palette-blue, 0.22);
+}
+
+.author__name {
+  letter-spacing: -0.01em;
+}
+
+/* The sidebar bio is content, not a caption: give it the body colour rather
+ * than the template's gray. */
+.author__bio {
+  color: $text-color;
+}
+
+/* --------------------------------------------------------------- certificate */
+
+/* Four certificates, two per row. The template stacked them full-bleed down
+ * the page, which read as a scrapbook rather than a CV. */
 .cert-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -36,21 +85,24 @@
   line-height: 1.4;
 }
 
-@media (max-width: 37.5em) {
-  .cert-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
+/* ------------------------------------------------------------------- chips */
+
+/* Used for a project's stack chips and, on the homepage, for the skills that
+ * used to be twelve shields.io images (twelve third-party requests per page). */
+.chip {
+  display: inline-block;
+  margin: 0 0.3rem 0.3rem 0;
+  padding: 0.05rem 0.45rem;
+  border: 1px solid rgba($palette-blue, 0.22);
+  border-radius: 3px;
+  background: rgba($palette-blue, 0.05);
+  font-size: $type-size-7;
+  color: mix(#000, $palette-blue, 30%);
+  white-space: nowrap;
 }
 
-/* Safety net: a width attribute must never be able to widen the viewport. */
-.page__content img,
-.page__hero img,
-.archive__item img {
-  max-width: 100%;
-  height: auto;
-}
+/* ------------------------------------------------------------ project cards */
 
-/* Project cards (/projects/, data in _data/projects.yml). */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -64,7 +116,11 @@
   padding: 1rem 1.15rem 1.1rem;
   border: 1px solid $border-color;
   border-radius: 6px;
-  background: #fff;
+  background: $background-color;
+
+  &:hover {
+    border-color: rgba($palette-blue, 0.4);
+  }
 }
 
 .project-card__title {
@@ -87,19 +143,19 @@
   margin: 0;
 }
 
-.chip {
-  display: inline-block;
-  margin: 0 0.3rem 0.3rem 0;
-  padding: 0.05rem 0.45rem;
-  border: 1px solid $border-color;
-  border-radius: 3px;
-  font-size: $type-size-7;
-  color: $gray;
-  white-space: nowrap;
-}
+/* ------------------------------------------------------------------ narrow */
 
 @media (max-width: 37.5em) {
+  .cert-grid,
   .project-grid {
     grid-template-columns: minmax(0, 1fr);
   }
+}
+
+/* Safety net: a width attribute must never be able to widen the viewport. */
+.page__content img,
+.page__hero img,
+.archive__item img {
+  max-width: 100%;
+  height: auto;
 }

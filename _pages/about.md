@@ -13,21 +13,19 @@ redirect_from:
 
 - **Areas of interest:** machine learning, language models, image processing, computer vision, natural language processing, generative AI, multimodal LLMs and agents
 
-<p>
-  <img alt="Python" src="https://img.shields.io/badge/Python-1e1e2e?style=flat-square&logo=python&logoColor=89b4fa" />
-  <img alt="R" src="https://img.shields.io/badge/R-1e1e2e?style=flat-square&logo=r&logoColor=89b4fa" />
-  <img alt="LaTeX" src="https://img.shields.io/badge/LaTeX-1e1e2e?style=flat-square&logo=latex&logoColor=89b4fa" />
-  <img alt="Linux" src="https://img.shields.io/badge/Linux-1e1e2e?style=flat-square&logo=linux&logoColor=89b4fa" />
-  <img alt="Neovim" src="https://img.shields.io/badge/Neovim-1e1e2e?style=flat-square&logo=neovim&logoColor=89b4fa" />
-  <img alt="Git" src="https://img.shields.io/badge/Git-1e1e2e?style=flat-square&logo=git&logoColor=89b4fa" />
-</p>
-<p>
-  <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-1e1e2e?style=flat-square&logo=pytorch&logoColor=89b4fa" />
-  <img alt="TensorFlow" src="https://img.shields.io/badge/TensorFlow-1e1e2e?style=flat-square&logo=tensorflow&logoColor=89b4fa" />
-  <img alt="scikit-learn" src="https://img.shields.io/badge/scikit--learn-1e1e2e?style=flat-square&logo=scikitlearn&logoColor=89b4fa" />
-  <img alt="CUDA" src="https://img.shields.io/badge/CUDA-1e1e2e?style=flat-square&logo=nvidia&logoColor=89b4fa" />
-  <img alt="Vue" src="https://img.shields.io/badge/Vue-1e1e2e?style=flat-square&logo=vuedotjs&logoColor=89b4fa" />
-  <img alt="React" src="https://img.shields.io/badge/React-1e1e2e?style=flat-square&logo=react&logoColor=89b4fa" />
+<p class="skill-chips">
+  <span class="chip">Python</span>
+  <span class="chip">R</span>
+  <span class="chip">LaTeX</span>
+  <span class="chip">Linux</span>
+  <span class="chip">Neovim</span>
+  <span class="chip">Git</span>
+  <span class="chip">PyTorch</span>
+  <span class="chip">TensorFlow</span>
+  <span class="chip">scikit-learn</span>
+  <span class="chip">CUDA</span>
+  <span class="chip">Vue</span>
+  <span class="chip">React</span>
 </p>
 
 ## 🏆 Pinned Repositories
@@ -44,12 +42,12 @@ redirect_from:
 
 ## 📫 Contact
 
-Feel free to reach out by [email](mailto:zijincai@link.cuhk.edu.cn) or find me here:
+Feel free to reach out by [email](mailto:zijincai@link.cuhk.edu.cn), or find me on:
 
-<p align="center">
-  <a href="https://github.com/CAI991108"><img alt="GitHub: CAI991108" src="https://img.shields.io/badge/GitHub-CAI991108-1e1e2e?style=flat-square&logo=github&logoColor=89b4fa" /></a>
-  <a href="https://huggingface.co/jimchoi"><img alt="Hugging Face: jimchoi" src="https://img.shields.io/badge/Hugging%20Face-jimchoi-1e1e2e?style=flat-square&logo=huggingface&logoColor=89b4fa" /></a>
-  <a href="https://wakatime.com/@CAI991108"><img alt="Total time coded since July 2024" src="https://wakatime.com/badge/user/0a1a641a-17e3-4bcf-8339-f02a8fb3a069.svg" /></a>
+<p class="contact-links">
+  <a href="https://github.com/CAI991108">GitHub</a> ·
+  <a href="https://huggingface.co/jimchoi">Hugging Face</a> ·
+  <a href="https://wakatime.com/@CAI991108">WakaTime</a>
 </p>
 
 ## 📜 Some Certifications
