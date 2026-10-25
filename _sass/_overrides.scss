@@ -92,12 +92,13 @@ img.author__avatar {
 .chip {
   display: inline-block;
   margin: 0 0.3rem 0.3rem 0;
-  padding: 0.05rem 0.45rem;
-  border: 1px solid rgba($palette-blue, 0.22);
+  padding: 0.08rem 0.5rem;
+  border: 1px solid rgba($palette-blue, 0.28);
   border-radius: 3px;
-  background: rgba($palette-blue, 0.05);
-  font-size: $type-size-7;
-  color: mix(#000, $palette-blue, 30%);
+  background: rgba($palette-blue, 0.06);
+  font-size: $type-size-6;
+  line-height: 1.5;
+  color: $palette-blue;
   white-space: nowrap;
 }
 

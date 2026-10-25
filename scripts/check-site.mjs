@@ -234,7 +234,11 @@ for (const path of PAGES) {
         !/komarev\.com/.test(html),
         /komarev\.com/.test(html) ? "komarev still embedded" : "none",
       );
-      const thirdPartyImages = [...html.matchAll(/<img[^>]+src="(https?:\/\/[^"]+)"/gi)].map((m) => m[1]);
+      // Absolute same-origin URLs (the template's base_path makes the avatar
+      // one) are not third-party; compare against the host, not the prefix.
+      const thirdPartyImages = [...html.matchAll(/<img[^>]+src="(https?:\/\/[^"]+)"/gi)]
+        .map((m) => m[1])
+        .filter((u) => !u.toLowerCase().startsWith(BASE.toLowerCase()));
       record(
         "home loads no third-party images",
         thirdPartyImages.length === 0,
