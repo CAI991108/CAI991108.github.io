@@ -11,3 +11,5 @@ Gemfile.lock
 # Ingore files created by npm
 node_modules
 package-lock.json
+# Full-res avatar source (regenerate images/profile.webp with scripts/make-assets.py)
+images/profile.src.jpg

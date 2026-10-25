@@ -7,12 +7,12 @@
 # server process.
 
 # Basic Site Settings
-locale                   : "Shenzhen - China"
+locale                   : "en"
 title                    : "Zijin CAI / 蔡子晋"
 title_separator          : "-"
 name                     : &name "Zijin CAI"
 description              : &description "PhD in AI, CUHK-Shenzhen - BSc Econ, UoM"
-url                      : https://CAI991108.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io"
+url                      : https://cai991108.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "https://github.com/CAI991108?tab=repositories"
 
@@ -21,7 +21,7 @@ repository               : "https://github.com/CAI991108?tab=repositories"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "profile.webp"
   name             : "Zijin CAI"
   pronouns         : "he/him"  
   bio              : "PhD student in AI · multimodal perception and generative models"
@@ -137,6 +137,7 @@ facebook:
   app_id                 :
   publisher              :
 og_image                 :  # Open Graph/Twitter default site image
+og_locale                : "en_US" # Open Graph locale, language_TERRITORY
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -165,12 +166,14 @@ exclude:
   - .github
   - .jekyll-assets-cache
   - .sass-cache
+  - AGENTS.md
   - assets/js/_main.js
   - assets/js/plugins
   - assets/js/vendor
   - CHANGELOG
   - Capfile
   - config
+  - docs
   - Dockerfile
   - Gemfile
   - Gruntfile.js
@@ -182,6 +185,7 @@ exclude:
   - package.json*
   - Rakefile
   - README
+  - scripts
   - tmp
   - vendor
 keep_files:

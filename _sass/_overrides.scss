@@ -1,0 +1,51 @@
+/* ---------------------------------------------------------------------------
+ * Site overrides
+ *
+ * Everything site-specific goes here so the academicpages partials stay
+ * untouched and can still be merged from upstream.
+ * ------------------------------------------------------------------------ */
+
+/* Certificate grid: two per row, one per row on narrow screens.
+ * Replaces fixed-width <img width="470"> markup that forced the whole page to
+ * ~500px wide and made every page scroll sideways on a 390px phone. */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 1.5rem;
+  margin: 1.75rem 0 2rem;
+}
+
+.cert-grid figure {
+  margin: 0;
+}
+
+.cert-grid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  background: $background-color;
+}
+
+.cert-grid figcaption {
+  margin-top: 0.45rem;
+  font-size: $type-size-7;
+  color: $gray;
+  text-align: center;
+  line-height: 1.4;
+}
+
+@media (max-width: 37.5em) {
+  .cert-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Safety net: a width attribute must never be able to widen the viewport. */
+.page__content img,
+.page__hero img,
+.archive__item img {
+  max-width: 100%;
+  height: auto;
+}
