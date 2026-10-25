@@ -110,7 +110,14 @@ function frontMatterGate() {
 // ---------------------------------------------------------------- includes --
 
 function includeGate() {
-  const sources = walk(ROOT).filter((f) => /\.(md|markdown|html)$/i.test(f) && !/^_site/.test(relative(ROOT, f)));
+  // Only the directories Jekyll actually renders. Scanning the whole repo
+  // catches prose in docs that merely quotes a tag — a false positive that
+  // blocks a push for no reason.
+  const liquidDirs = ["_pages", "_layouts", "_includes", "_posts", "_teaching", "_drafts"];
+  const sources = liquidDirs
+    .filter((d) => statSync(join(ROOT, d), { throwIfNoEntry: false }))
+    .flatMap((d) => walk(join(ROOT, d)))
+    .filter((f) => /\.(md|markdown|html)$/i.test(f));
   const missing = [];
   let count = 0;
 
