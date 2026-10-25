@@ -253,6 +253,25 @@ for (const path of PAGES) {
   }
 }
 
+// Pages the template shipped that this site has deliberately dropped. If one
+// comes back, something re-added a stub to the nav.
+for (const path of [
+  "/publications/",
+  "/talks/",
+  "/teaching/",
+  "/portfolio/",
+  "/year-archive/",
+  "/markdown/",
+  "/terms/",
+]) {
+  try {
+    const r = await fetch(BASE + path, { redirect: "manual" });
+    record(`${path} stays gone`, r.status === 404, `${r.status}`);
+  } catch (err) {
+    record(`${path} stays gone`, false, err.message);
+  }
+}
+
 if (chrome) {
   for (const path of PAGES) {
     try {
