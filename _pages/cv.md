@@ -17,7 +17,9 @@ redirect_from:
 Education
 ======
 ### **The Chinese University of Hong Kong, Shenzhen**
-*Master of Science in Data Science* -- *2024-2026 (expected)*
+*PhD in Artificial Intelligence* -- *2026.09-2031.06 (expected)*
+  * Supervisor: [Prof. Jianhua Huang](https://sai.cuhk.edu.cn/en/teacher/108)
+*Master of Science in Data Science* -- *2024-2026*
   * Core Courses: Machine Learning, Language Models, Image Processing and Computer Vision, etc
 
 ### **The London School of Economics and Political Science**

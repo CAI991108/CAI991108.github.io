@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-👋 I am a **PhD student in Artificial Intelligence at CUHK-Shenzhen**, working on multimodal perception and generative models. I am also a Research Fellow at the [CUHK(SZ)–CROSS Joint Laboratory](https://github.com/CUHKSZ-CROSS-Lab), a joint lab of the School of Artificial Intelligence and Shenzhen Kuafu-Yundun Technology. Before that I studied Economics at the University of Manchester.
+👋 I am a **PhD student in Artificial Intelligence at CUHK-Shenzhen**, working on multimodal perception and generative models. I am also a Research Fellow at the [CUHK(SZ)–CROSS Joint Laboratory](https://github.com/CUHKSZ-CROSS-Lab), a joint lab of the School of Artificial Intelligence and Shenzhen Kuafu-Yundun Technology. Before that I studied Data Science at CUHK-Shenzhen and Economics at the University of Manchester.
 
 ## 🛠️ Skills & Tools
 
