@@ -24,6 +24,52 @@ body {
   max-width: 66ch;
 }
 
+/* ------------------------------------------------------------- Chinese pages */
+
+/* The measure has to change because the unit does: `ch` is the width of "0",
+ * and a Han character is a full em — twice a Latin lowercase. 32em is the same
+ * reading rhythm as 66ch English, and it lands inside clreq's 17–40 characters
+ * per line (minimum 10, hard maximum 48) at exactly 32 full-width characters.
+ *
+ * 16px, not 17: Noto Serif CJK's x-height is 51.4% of the em against Source
+ * Serif 4's 47.5%, so the same pixel size makes the CJK face look ~8% larger
+ * next to the Latin one. 1.75 line-height, because Chinese has no ascenders or
+ * descenders to walk the eye along and needs the air instead.
+ *
+ * The five line rules are all clreq: strict line breaking (禁则) keeps 。 and 」
+ * off the start of a line; text-autospace is the quarter-em between Chinese and
+ * Latin that used to be hand-spaced; letter-spacing stays normal because the
+ * standard is set-solid (the heading rule above deliberately overrides it for
+ * labels, which is a different job). */
+:lang(zh) {
+  font-size: 16px;
+  line-height: 1.75;
+  line-break: strict;
+  text-autospace: normal;
+  letter-spacing: normal;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+:lang(zh) .page__inner-wrap,
+:lang(zh) .archive {
+  max-width: 32em;
+}
+
+/* Emphasis in Chinese is a dot under the character (着重号, per GB/T 15834-2011),
+ * never an italic: the oblique is not part of the Chinese written tradition and
+ * clreq leaves its italic section as "TBD(?)". text-emphasis has been Baseline
+ * since March 2022; the position must be stated explicitly because the CSS
+ * default, `over`, is the Japanese convention. */
+:lang(zh) em,
+:lang(zh) .em {
+  font-style: normal;
+  -webkit-text-emphasis: dot;
+  text-emphasis: dot;
+  text-emphasis-position: under right;
+  text-emphasis-color: currentColor;
+}
+
 h1,
 h2,
 h3,
