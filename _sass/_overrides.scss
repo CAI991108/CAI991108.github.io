@@ -363,7 +363,10 @@ img.author__avatar {
   .breadcrumbs,
   .cv-download,
   .section-more,
-  .page__title {
+  .page__title,
+  /* The certificates are evidence on screen and noise on paper: the awards
+   * above them already say the same thing in a line each. */
+  .cert-grid {
     display: none !important;
   }
 
@@ -401,9 +404,31 @@ img.author__avatar {
     break-after: avoid;
   }
 
+  /* Six sections on two pages: the screen rhythm has more air than paper can
+   * afford, so the rules close up without touching the type. */
+  .archive h2 {
+    margin-top: 1.5rem;
+    padding-top: 0.9rem;
+  }
+
   .cv-row,
   .lab-table tr {
     break-inside: avoid;
+  }
+
+  /* The last paragraph's bottom margin spills onto a third, empty page. The
+   * theme keeps padding on several wrappers for the screen; none of it belongs
+   * on paper, and any of it can tip the document onto another sheet. */
+  html,
+  body,
+  #main,
+  .page,
+  .archive,
+  .page__inner-wrap,
+  article {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    min-height: 0 !important;
   }
 }
 

@@ -89,6 +89,32 @@ Extracurricular activities
 - Ran workshops and conferences on job consulting and business analytics
 - Liaised with sponsors to secure funding for the society
 
+Awards
+------
+
+<p class="cv-row"><strong>5-Day Generative AI Intensive</strong><span class="cv-dates">Google · Kaggle</span></p>
+
+<p class="cv-row"><strong>Agents Course</strong><span class="cv-dates">Hugging Face · 2025</span></p>
+
+<p class="cv-row"><strong>Introduction to Transformer-Based NLP</strong><span class="cv-dates">NVIDIA · 2025</span></p>
+
+<p class="cv-row"><strong>Accelerating Python Applications with CUDA</strong><span class="cv-dates">NVIDIA · 2025</span></p>
+
+<div class="cert-grid">
+  <figure>
+    <img src="{{ '/images/cert-genai-5day.webp' | relative_url }}" alt="Google 5-Day Generative AI Intensive course certificate" loading="lazy">
+  </figure>
+  <figure>
+    <img src="{{ '/images/cert-hf.webp' | relative_url }}" alt="Hugging Face Agents course certificate" loading="lazy">
+  </figure>
+  <figure>
+    <img src="{{ '/images/cert-nvidia-transformer-nlp.webp' | relative_url }}" alt="NVIDIA certificate: Introduction to Transformer-Based Natural Language Processing" loading="lazy">
+  </figure>
+  <figure>
+    <img src="{{ '/images/cert-nvidia-cuda-python.webp' | relative_url }}" alt="NVIDIA certificate: Accelerating Python applications with CUDA" loading="lazy">
+  </figure>
+</div>
+
 Skills
 ------
 
