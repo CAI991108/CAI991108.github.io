@@ -10,7 +10,11 @@
 {% for p in site.data.projects limit: row_limit %}
   <article class="work-item">
     <h3><a href="{{ p.url }}">{{ p.name }}</a></h3>
-    <p>{{ p.blurb }}</p>
+    {% comment %}A Chinese page reads blurb_zh when the data file has one; the
+    English blurb stays the fallback, so a missing translation degrades to
+    English rather than to a blank row.{% endcomment %}
+    {% assign blurb = p.blurb %}{% if page.lang == "zh-Hans" %}{% assign blurb = p.blurb_zh | default: p.blurb %}{% endif %}
+    <p>{{ blurb }}</p>
     <p class="work-stack">{{ p.stack | join: " · " }}</p>
   </article>
 {% endfor %}

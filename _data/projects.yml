@@ -6,6 +6,9 @@
   blurb: >-
     A Catppuccin Mocha bundle for Omarchy — a theme-following fcitx5 hook, local
     DSH plugins, and a DSH-to-WakaTime bridge.
+  blurb_zh: >-
+    Omarchy 的 Catppuccin Mocha 主题包——跟着主题走的 fcitx5 钩子、本地 DSH
+    插件，以及 DSH 到 WakaTime 的桥。
   stack: [JavaScript, Hyprland, Waybar]
 
 - name: Robotic-Action-Frame-Prediction-with-InstructPix2Pix
@@ -13,6 +16,8 @@
   blurb: >-
     An InstructPix2Pix fine-tune that predicts a robot's future action frames at
     256x256.
+  blurb_zh: >-
+    基于 InstructPix2Pix 的微调，在 256×256 上预测机器人未来的动作帧。
   stack: [Python, PyTorch, Diffusion]
 
 - name: JD_search_agent

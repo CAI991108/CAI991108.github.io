@@ -25,8 +25,11 @@ author:
   name             : "Zijin CAI"
   pronouns         : "he/him"  
   bio              : "PhD student in AI · multimodal perception and generative models"
+  bio_zh           : "人工智能博士研究生 · 多模态感知与生成式模型"
   location         : "Shenzhen - China"
+  location_zh      : "中国 · 深圳"
   employer         : "CUHK(SZ)"
+  employer_zh      : "香港中文大学（深圳）"
   uri              : # "https://github.com/CAI991108"
   email            : "zijincai@link.cuhk.edu.cn" 
   cv               : "/files/cv.pdf" # shown as "Download CV" in the sidebar
@@ -248,6 +251,10 @@ defaults:
     values:
       layout: single
       author_profile: true
+      # Every page declares a language; the Chinese pages override it. Without
+      # this an include that reads page.lang gets nil on any page that forgot,
+      # and the English label leaks into a Chinese layout.
+      lang: en
 
 
 # Sass/SCSS

@@ -470,3 +470,20 @@ img.author__avatar {
   max-width: 100%;
   height: auto;
 }
+
+/* ---------------------------------------------------------------------- i18n */
+
+/* The EN mark: a nav item on a Chinese page that leads to a page that only
+ * exists in English. Small and muted — a signpost, not a badge. */
+.is-en {
+  margin-left: 0.2em;
+  font-size: 0.85em;
+  color: $gray;
+  letter-spacing: 0.02em;
+}
+
+/* The language switch is one word at the end of the nav. It is chrome, not a
+ * destination, so it does not take the link colour the nav items get. */
+.masthead__menu-item--lang a {
+  color: $gray;
+}

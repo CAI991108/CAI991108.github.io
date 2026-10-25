@@ -1,0 +1,17 @@
+{% comment %}
+  hreflang: the language alternates for a page that has a twin.
+
+  Google drops a one-way set, so the self reference is emitted too; x-default
+  always lands on the English page, the site default reading language. Pages
+  without twin: in their front matter emit nothing at all.
+
+  jekyll-sitemap emits no hreflang (checked its source), so these link tags are
+  the only place the pairing is stated to crawlers.
+{% endcomment %}
+{% if page.twin %}
+{% assign self_lang = page.lang | default: site.locale %}
+{% assign twin_lang = 'zh-Hans' %}{% if self_lang == 'zh-Hans' %}{% assign twin_lang = 'en' %}{% endif %}
+<link rel="alternate" hreflang="{{ self_lang }}" href="{{ page.url | absolute_url }}">
+<link rel="alternate" hreflang="{{ twin_lang }}" href="{{ page.twin | absolute_url }}">
+<link rel="alternate" hreflang="x-default" href="{% if self_lang == 'zh-Hans' %}{{ page.twin | absolute_url }}{% else %}{{ page.url | absolute_url }}{% endif %}">
+{% endif %}

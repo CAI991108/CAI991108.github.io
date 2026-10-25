@@ -7,14 +7,33 @@
         <button><div class="navicon"></div></button>
         <ul class="visible-links">
           <li class="masthead__menu-item masthead__menu-item--lg"><a href="{{ base_path }}/">{{ site.title }}</a></li>
-          {% for link in site.data.navigation.main %}
+          {% comment %}
+            The nav follows the page language: English pages read
+            navigation.main, Chinese pages read navigation.zh. An item that
+            leads to an English-only page carries en: true and gets an EN
+            mark, so the reader can see that before clicking.
+          {% endcomment %}
+          {% if page.lang == "zh-Hans" %}{% assign nav = site.data.navigation.zh %}{% else %}{% assign nav = site.data.navigation.main %}{% endif %}
+          {% for link in nav %}
             {% if link.url contains 'http' %}
               {% assign domain = '' %}
               {% else %}
               {% assign domain = base_path %}
             {% endif %}
-            <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
+            <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}">{{ link.title }}{% if link.en %}<span class="is-en">EN</span>{% endif %}</a></li>
           {% endfor %}
+          {% comment %}
+            The language switch is one link: the other language. A page with
+            a twin goes to that twin — same page, other language. A page
+            without one falls back to the other language home, because there
+            is nothing else to land on.
+          {% endcomment %}
+          {% assign switch_url = page.twin %}
+          {% assign switch_label = "中文" %}
+          {% assign switch_lang = "zh-Hans" %}
+          {% if page.lang == "zh-Hans" %}{% assign switch_label = "EN" %}{% assign switch_lang = "en" %}{% endif %}
+          {% unless switch_url %}{% if page.lang == "zh-Hans" %}{% assign switch_url = "/" %}{% else %}{% assign switch_url = "/zh/" %}{% endif %}{% endunless %}
+          <li class="masthead__menu-item masthead__menu-item--lang"><a href="{{ base_path }}{{ switch_url }}" lang="{{ switch_lang }}" hreflang="{{ switch_lang }}">{{ switch_label }}</a></li>
         </ul>
         <ul class="hidden-links hidden"></ul>
       </nav>

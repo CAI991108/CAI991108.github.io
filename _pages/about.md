@@ -1,5 +1,7 @@
 ---
 permalink: /
+lang: en
+twin: /zh/
 author_profile: true
 description: "PhD student in AI at CUHK-Shenzhen: multimodal perception, generative models, and the research infrastructure that makes them repeatable."
 redirect_from:

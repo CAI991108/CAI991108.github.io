@@ -16,3 +16,17 @@ main:
 
   - title: "CV"
     url: /cv/
+
+# The Chinese pages use their own labels. The last two lead to pages that only
+# exist in English, and say so: en: true renders the EN mark in the masthead.
+zh:
+  - title: "研究"
+    url: /research/
+
+  - title: "项目"
+    url: /projects/
+    en: true
+
+  - title: "CV"
+    url: /cv/
+    en: true
