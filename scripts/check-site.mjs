@@ -254,8 +254,13 @@ for (const path of PAGES) {
       const h1 = (html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/) || [])[1] || "";
       record("home h1 is the name", /Zijin CAI/.test(h1) && /蔡子晋/.test(h1), h1.replace(/<[^>]+>/g, "").trim());
       record("home drops the greeting", !/Hi there, this is/i.test(html), /Hi there, this is/i.test(html) ? "greeting still there" : "");
-      const homeCards = (html.match(/class="project-card"/g) || []).length;
-      record("home shows four projects", homeCards === 4, `${homeCards} cards`);
+      const workRows = (html.match(/class="work-item"/g) || []).length;
+      record("home shows two pieces of work", workRows === 2, `${workRows} rows`);
+      record(
+        "home has no cards or chips",
+        !/class="project-card"|class="chip"/.test(html),
+        /class="project-card"|class="chip"/.test(html) ? "card chrome still present" : "",
+      );
 
       const ogImage = (html.match(/property="og:image" content="([^"]+)"/) || [])[1];
       record("home has og:image", /og-card\.png/.test(ogImage || ""), ogImage || "missing");

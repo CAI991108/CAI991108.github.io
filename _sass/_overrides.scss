@@ -158,6 +158,58 @@ img.author__avatar {
   }
 }
 
+/* Work rows: the project card flattened into title, one line, stack. The rule
+ * between them does the separating, so no borders or fills are needed. */
+.work-item {
+  padding: 0.95rem 0;
+  border-bottom: 1px solid $border-color;
+
+  &:last-of-type {
+    border-bottom: 0;
+    padding-bottom: 0.2rem;
+  }
+
+  h3 {
+    margin: 0 0 0.2rem;
+  }
+
+  h3 a {
+    color: $text-color;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      border-bottom-color: $link-color;
+    }
+  }
+
+  p {
+    margin: 0 0 0.3rem;
+  }
+}
+
+.work-stack {
+  font-family: $sans-ui;
+  font-size: 0.76rem;
+  letter-spacing: 0.01em;
+  color: $gray;
+}
+
+/* The closing meta line: contact details, set apart by a rule rather than a
+ * section heading they do not need. */
+.hero__meta {
+  font-family: $sans-ui;
+  font-size: 0.82rem;
+  color: $gray;
+  margin: 2.6rem 0 0;
+  padding-top: 1.4rem;
+  border-top: 1px solid $border-color;
+
+  a {
+    color: $slate-link;
+  }
+}
+
 /* ------------------------------------------------------------- lab systems */
 
 .lab-note {

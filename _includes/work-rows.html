@@ -1,0 +1,16 @@
+{% comment %}
+  Flat work rows, shared by the homepage (two) and /projects/ (all of them).
+
+  Data: _data/projects.yml. Callers pass a limit, e.g. limit=2 in the include
+  tag. include.limit arrives as a string and Liquid's for-limit wants a number,
+  so it is coerced here; uncoerced, the limit is silently dropped and every
+  project renders.
+{% endcomment %}
+{% assign row_limit = include.limit | default: 99 | plus: 0 %}
+{% for p in site.data.projects limit: row_limit %}
+  <article class="work-item">
+    <h3><a href="{{ p.url }}">{{ p.name }}</a></h3>
+    <p>{{ p.blurb }}</p>
+    <p class="work-stack">{{ p.stack | join: " · " }}</p>
+  </article>
+{% endfor %}
