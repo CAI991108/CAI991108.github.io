@@ -55,11 +55,21 @@ Feel free to reach out by [email](mailto:zijincai@link.cuhk.edu.cn) or find me h
 
 ## 📜 Some Certifications
 
-<p align="center">
-  <img width="470" alt="Google 5-Day Gen AI Intensive course certificate" src="/images/cert-genai-5day.webp" />
-  <br/>
-  <img width="400" alt="NVIDIA certificate: Introduction to Transformer-Based Natural Language Processing" src="/images/cert-nvidia-transformer-nlp.webp" />
-  <img width="400" alt="NVIDIA certificate: Accelerating Python applications with CUDA" src="/images/cert-nvidia-cuda-python.webp" />
-  <br/>
-  <img width="400" alt="Hugging Face course certificate" src="/images/cert-hf.webp" />
-</p>
+<div class="cert-grid">
+  <figure>
+    <img src="{{ '/images/cert-genai-5day.webp' | relative_url }}" alt="Google 5-Day Generative AI Intensive course certificate" loading="lazy">
+    <figcaption>Google · 5-Day Generative AI Intensive</figcaption>
+  </figure>
+  <figure>
+    <img src="{{ '/images/cert-hf.webp' | relative_url }}" alt="Hugging Face Agents course certificate" loading="lazy">
+    <figcaption>Hugging Face · Agents Course</figcaption>
+  </figure>
+  <figure>
+    <img src="{{ '/images/cert-nvidia-transformer-nlp.webp' | relative_url }}" alt="NVIDIA certificate: Introduction to Transformer-Based Natural Language Processing" loading="lazy">
+    <figcaption>NVIDIA · Transformer-Based NLP</figcaption>
+  </figure>
+  <figure>
+    <img src="{{ '/images/cert-nvidia-cuda-python.webp' | relative_url }}" alt="NVIDIA certificate: Accelerating Python applications with CUDA" loading="lazy">
+    <figcaption>NVIDIA · CUDA for Python</figcaption>
+  </figure>
+</div>
