@@ -2,24 +2,29 @@
   The two CROSS Joint Lab systems. Shared by the homepage and /research/ so the
   description cannot drift between them. Source stays closed; only the shape of
   the systems is public.
+
+  The Chinese pages read the same table in Chinese: the two descriptions are the
+  only prose here, so they are translated inline rather than moved to a data
+  file. Keep the two versions saying the same thing.
 {% endcomment %}
+{% assign zh = false %}{% if page.lang == 'zh-Hans' %}{% assign zh = true %}{% endif %}
 <table class="lab-table">
   <thead>
     <tr>
-      <th>System</th>
-      <th>What it does</th>
-      <th>Stack</th>
+      <th>{% if zh %}系统{% else %}System{% endif %}</th>
+      <th>{% if zh %}做什么{% else %}What it does{% endif %}</th>
+      <th>{% if zh %}技术栈{% else %}Stack{% endif %}</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><strong>CrossLedger</strong></td>
-      <td>Three-surface ledger automation — an API, a workbench and a desktop executor — with SSO, object storage and persisted task state.</td>
+      <td>{% if zh %}三端账本自动化——API、工作台、桌面执行器——带 SSO、对象存储与持久化的任务状态。{% else %}Three-surface ledger automation — an API, a workbench and a desktop executor — with SSO, object storage and persisted task state.{% endif %}</td>
       <td><span class="work-stack">NestJS · Vue · Postgres · Keycloak · MinIO</span></td>
     </tr>
     <tr>
       <td><strong>CrossBooks</strong></td>
-      <td>Document intake and verification: per-company authorisation, versioned originals, conflict-safe drafts.</td>
+      <td>{% if zh %}文档收件与核验：按公司授权、原件的版本化、冲突安全的草稿。{% else %}Document intake and verification: per-company authorisation, versioned originals, conflict-safe drafts.{% endif %}</td>
       <td><span class="work-stack">Vue · Postgres · Docker</span></td>
     </tr>
   </tbody>

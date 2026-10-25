@@ -2,6 +2,8 @@
 layout: single
 title: "Research"
 permalink: /research/
+lang: en
+twin: /zh/research/
 author_profile: true
 description: "Research across multimodal perception, generative models and agents — and the infrastructure that decides whether any of it reproduces."
 ---
