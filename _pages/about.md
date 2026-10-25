@@ -50,7 +50,6 @@ Feel free to reach out by [email](mailto:zijincai@link.cuhk.edu.cn) or find me h
   <a href="https://github.com/CAI991108"><img alt="GitHub: CAI991108" src="https://img.shields.io/badge/GitHub-CAI991108-1e1e2e?style=flat-square&logo=github&logoColor=89b4fa" /></a>
   <a href="https://huggingface.co/jimchoi"><img alt="Hugging Face: jimchoi" src="https://img.shields.io/badge/Hugging%20Face-jimchoi-1e1e2e?style=flat-square&logo=huggingface&logoColor=89b4fa" /></a>
   <a href="https://wakatime.com/@CAI991108"><img alt="Total time coded since July 2024" src="https://wakatime.com/badge/user/0a1a641a-17e3-4bcf-8339-f02a8fb3a069.svg" /></a>
-  <img alt="Profile views" src="https://komarev.com/ghpvc/?username=CAI991108&abbreviated=true&color=0969DA" />
 </p>
 
 ## 📜 Some Certifications
